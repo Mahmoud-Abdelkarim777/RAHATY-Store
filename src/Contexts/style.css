@@ -1,0 +1,20 @@
+
+
+.swiper-slide .category-img {
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+}
+.Swiper{
+  height: 240px;
+}
+.height{
+  height: 190px;
+}
+
+.heightOfSwiperSlied{
+  height: 330px;
+}
+.heightOfSwiper{
+  height: 380px;
+}

@@ -1,0 +1,81 @@
+import Navbar from "../Components/Navbar";
+
+import { useContext } from "react";
+import { ProductsContext } from "../Contexts/ProductsContext";
+import { Link } from "react-router-dom";
+export default function Products() {
+  const { products, loading, error } = useContext(ProductsContext);
+  // console.log(products);
+
+  const LimtedData = products.map((product) => {
+    return (
+      <div
+        key={product.id}
+        className="cursor-pointer relative flex flex-col h-full bg-white shadow-sm border border-slate-200 rounded-lg overflow-hidden"
+      >
+        {/* Product Image */}
+        <div className="relative h-56 m-2.5 overflow-hidden rounded-md">
+          <Link to="/ProductDetails">
+            <img
+              src={product.thumbnail}
+              alt={product.title}
+              className="w-full h-full object-cover"
+            />
+
+            {/* Discount */}
+            <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
+              -{Math.round(product.discountPercentage)}%
+            </span>
+          </Link>
+
+          {/* Wishlist */}
+          <button className="absolute top-3 right-3 bg-white w-9 h-9 rounded-full flex items-center justify-center shadow">
+            <i className="fa-regular fa-heart text-black"></i>
+          </button>
+        </div>
+
+        {/* Product Info */}
+        <Link to="/ProductDetails">
+          <div className="p-4 flex-grow">
+            <h2 className="text-lg font-semibold text-slate-900 line-clamp-1">
+              {product.title}
+            </h2>
+
+            <p className="text-sm text-slate-500 mt-1">{product.category}</p>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1 mt-3">
+              <i className="fa-solid fa-star text-yellow-400"></i>
+
+              <span className="text-sm text-slate-600">{product.rating}</span>
+            </div>
+
+            {/* Price */}
+            <div className="flex items-center gap-2 mt-3">
+              <span className="text-xl font-bold text-slate-900">
+                ${product.price}
+              </span>
+            </div>
+          </div>
+        </Link>
+        {/* Add To Cart */}
+        <div className="p-4 pt-0">
+          <button className="w-full bg-black text-white py-2.5 rounded-lg hover:bg-slate-800 transition">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    );
+  });
+
+  return (
+    <>
+      <Navbar />
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {LimtedData}
+        </div>
+      </div>
+    </>
+  );
+}
