@@ -6,14 +6,16 @@ import App from "./App.jsx";
 
 import ProductsProvider from "./Contexts/ProductsContext.jsx";
 import CategoriesProvider from "./Contexts/CategoriesContext.jsx";
-
+import CartProvider from "./Contexts/CartContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <ProductsProvider>
         <CategoriesProvider>
-          <App />
+          <CartProvider>
+            <App />
+          </CartProvider>
         </CategoriesProvider>
       </ProductsProvider>
     </BrowserRouter>

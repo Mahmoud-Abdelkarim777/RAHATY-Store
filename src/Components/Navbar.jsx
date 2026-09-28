@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+
+import { useContext } from "react";
+import { CartContext } from "../Contexts/CartContext";
 export default function Navbar() {
+  const { cartCount } = useContext(CartContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [name, setName] = useState("")
@@ -65,7 +69,7 @@ export default function Navbar() {
             <button className=" relative text-black">
               <i className="fa-solid fa-cart-shopping"></i>
               <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
-                0
+                {cartCount}
               </span>
             </button>
           </Link>

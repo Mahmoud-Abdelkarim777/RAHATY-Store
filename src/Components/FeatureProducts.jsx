@@ -9,12 +9,13 @@ import "swiper/css/pagination";
 import "../Contexts/style.css";
 // import required modules
 import { Pagination } from "swiper/modules";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-
-
+// context
+import { CartContext } from "../Contexts/CartContext";
 
 export default function FeatureProducts() {
+  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
   const [itemsFeature, setItemsFeature] = useState([]);
   useEffect(() => {
     axios
@@ -78,12 +79,20 @@ export default function FeatureProducts() {
               </span>
             </div>
           </div>
-
           {/* Add To Cart */}
-          <div className="p-2 pt-0">
+          <div
+            onClick={() => {
+              if (cartItems.includes(item.id)) {
+                removeFromCart(item.id);
+              } else {
+                addToCart(item.id);
+              }
+            }}
+            className="p-2 pt-0"
+          >
             <button className="w-full bg-black text-white py-2.5 rounded-lg hover:bg-slate-800 transition">
               <i className="fa-solid fa-cart-shopping text-white me-2"></i>
-              Add to Cart
+              {cartItems.includes(item.id) ? "remove from Cart" : "Add to Cart"}
             </button>
           </div>
         </div>
