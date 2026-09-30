@@ -2,9 +2,11 @@ import Navbar from "../Components/Navbar";
 
 import { useContext } from "react";
 import { ProductsContext } from "../Contexts/ProductsContext";
+import { CartContext } from "../Contexts/CartContext";
 import { Link } from "react-router-dom";
 export default function Products() {
   const { products, loading, error } = useContext(ProductsContext);
+  const { cartID, addToCart, removeFromCart } = useContext(CartContext);
   // console.log(products);
 
   const LimtedData = products.map((product) => {
@@ -60,8 +62,14 @@ export default function Products() {
         </Link>
         {/* Add To Cart */}
         <div className="p-4 pt-0">
-          <button className="w-full bg-black text-white py-2.5 rounded-lg hover:bg-slate-800 transition">
-            Add to Cart
+          <button onClick={() => {
+            if(cartID.includes(product.id)){
+              removeFromCart(product.id)
+            }else{
+              addToCart(product.id)
+            }
+          }} className="w-full bg-black text-white py-2.5 rounded-lg hover:bg-slate-800 transition">
+            {cartID.includes(product.id) ? "remove from Cart" : "Add to Cart"}
           </button>
         </div>
       </div>

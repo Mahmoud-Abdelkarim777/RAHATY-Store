@@ -15,7 +15,7 @@ import axios from "axios";
 import { CartContext } from "../Contexts/CartContext";
 
 export default function FeatureProducts() {
-  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
+  const { cartID, addToCart, removeFromCart } = useContext(CartContext);
   const [itemsFeature, setItemsFeature] = useState([]);
   useEffect(() => {
     axios
@@ -82,7 +82,7 @@ export default function FeatureProducts() {
           {/* Add To Cart */}
           <div
             onClick={() => {
-              if (cartItems.includes(item.id)) {
+              if (cartID.includes(item.id)) {
                 removeFromCart(item.id);
               } else {
                 addToCart(item.id);
@@ -92,7 +92,7 @@ export default function FeatureProducts() {
           >
             <button className="w-full bg-black text-white py-2.5 rounded-lg hover:bg-slate-800 transition">
               <i className="fa-solid fa-cart-shopping text-white me-2"></i>
-              {cartItems.includes(item.id) ? "remove from Cart" : "Add to Cart"}
+              {cartID.includes(item.id) ? "remove from Cart" : "Add to Cart"}
             </button>
           </div>
         </div>
