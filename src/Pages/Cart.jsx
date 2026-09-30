@@ -3,11 +3,19 @@ import Navbar from "./../Components/Navbar";
 import { CartContext } from "../Contexts/CartContext";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const [products, setProducts] = useState([]);
-  const { cartID } = useContext(CartContext);
+  const [loading, setLoading] = useState(true);
+
+  const { cartID, removeFromCart } = useContext(CartContext);
   useEffect(() => {
+    if (cartID.length === 0) {
+      setProducts([]);
+      setLoading(false);
+      return;
+    }
     const requests = cartID.map((id) => {
       return axios.get(`https://dummyjson.com/products/${id}`);
     });
@@ -20,6 +28,9 @@ export default function Cart() {
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [cartID]);
   const AllProducts = products.map((product) => {
@@ -32,7 +43,7 @@ export default function Cart() {
         <div className="w-full sm:w-32 h-32 bg-slate-100 rounded-lg overflow-hidden">
           <img
             src={product.thumbnail}
-            alt="title"
+            alt={product.title}
             className="w-full h-full object-cover"
           />
         </div>
@@ -48,7 +59,7 @@ export default function Cart() {
                   {product.category}
                 </p>
               </div>
-              <button className="text-red-500 hover:text-red-700">
+              <button onClick={() => {removeFromCart(product.id)}} className="text-red-500 hover:text-red-700">
                 <i className="fa-solid fa-trash"></i>
               </button>
             </div>
@@ -83,7 +94,33 @@ export default function Cart() {
   }, 0);
   const shipping = subTotal > 0 ? 10 : 0;
   const total = subTotal + shipping - discount;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <p className="text-lg font-semibold">Loading cart...</p>
+      </div>
+    );
+  }
 
+  if (products.length === 0) {
+    return (
+      <div className="min-h-[500px] flex flex-col justify-center items-center text-center">
+        <i className="fa-solid fa-cart-shopping text-6xl text-slate-300 mb-5"></i>
+
+        <h2 className="text-2xl font-bold text-slate-800">
+          Your Cart is Empty
+        </h2>
+
+        <p className="text-slate-500 mt-2">
+          Looks like you haven't added anything to your cart yet.
+        </p>
+
+        <Link to="/" className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition">
+          Continue Shopping
+        </Link>
+      </div>
+    );
+  }
   return (
     <>
       <Navbar />
