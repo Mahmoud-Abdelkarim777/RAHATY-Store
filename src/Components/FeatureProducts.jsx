@@ -13,9 +13,12 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 // context
 import { CartContext } from "../Contexts/CartContext";
+import { FavoritesContext } from "../Contexts/FavoritesContext";
 
 export default function FeatureProducts() {
   const { cartID, addToCart, removeFromCart } = useContext(CartContext);
+  const { favoriteIDs, addToFavorites, removeFromFavorites } =
+    useContext(FavoritesContext);
   const [itemsFeature, setItemsFeature] = useState([]);
   useEffect(() => {
     axios
@@ -49,8 +52,27 @@ export default function FeatureProducts() {
             <span className="absolute top-0 left-0 px-2 font-semibold text-white bg-red-500 rounded-full">
               {Math.round(item.discountPercentage)}%
             </span>
-
-            <i className="absolute top-2 right-2 fa-regular fa-heart cursor-pointer"></i>
+            <button
+              onClick={() => {
+                if (favoriteIDs.includes(item.id)) {
+                  removeFromFavorites(item.id);
+                } else {
+                  addToFavorites(item.id);
+                }
+              }}
+              className="absolute top-[-10px] right-2"
+            >
+              <span
+                className={`text-4xl cursor-pointer transition-colors ${
+                  favoriteIDs.includes(item.id)
+                    ? "text-red-500"
+                    : "text-slate-400"
+                }`}
+              >
+                ♥
+              </span>
+              
+            </button>
           </div>
 
           {/* Content */}

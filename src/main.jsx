@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import ProductsProvider from "./Contexts/ProductsContext.jsx";
 import CategoriesProvider from "./Contexts/CategoriesContext.jsx";
 import CartProvider from "./Contexts/CartContext.jsx";
+import FavoritesProvider from "./Contexts/FavoritesContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -14,7 +15,9 @@ createRoot(document.getElementById("root")).render(
       <ProductsProvider>
         <CategoriesProvider>
           <CartProvider>
-            <App />
+            <FavoritesProvider>
+              <App />
+            </FavoritesProvider>
           </CartProvider>
         </CategoriesProvider>
       </ProductsProvider>

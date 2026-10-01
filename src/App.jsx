@@ -10,7 +10,7 @@ import Footer from './Components/Footer';
 import { Routes, Route } from "react-router-dom";
 import Login from './Pages/Login';
 import Products from './Pages/Products';
-import ProductDetails from './Pages/ProductDetails';
+import FavoritePage from './Pages/FavoritePage';
 import Cart from './Pages/Cart';
 
 // context
@@ -32,7 +32,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/Login" element={<Login/>}/>
         <Route path="/products" element={<Products/>}/>
-        <Route path="/ProductDetails" element={<ProductDetails/>}/>
+        <Route path="/FavoritePage" element={<FavoritePage/>}/>
         <Route path="/Cart" element={<Cart/>}/>
       </Routes>
   );

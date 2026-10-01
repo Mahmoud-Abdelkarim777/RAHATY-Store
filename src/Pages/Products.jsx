@@ -4,10 +4,13 @@ import { useContext } from "react";
 import { ProductsContext } from "../Contexts/ProductsContext";
 import { CartContext } from "../Contexts/CartContext";
 import { Link } from "react-router-dom";
+import { FavoritesContext } from "../Contexts/FavoritesContext";
 export default function Products() {
   const { products, loading, error } = useContext(ProductsContext);
   const { cartID, addToCart, removeFromCart } = useContext(CartContext);
   // console.log(products);
+  const { favoriteIDs, addToFavorites, removeFromFavorites } =
+      useContext(FavoritesContext);
 
   const LimtedData = products.map((product) => {
     return (
@@ -31,9 +34,27 @@ export default function Products() {
           </Link>
 
           {/* Wishlist */}
-          <button className="absolute top-3 right-3 bg-white w-9 h-9 rounded-full flex items-center justify-center shadow">
-            <i className="fa-regular fa-heart text-black"></i>
-          </button>
+          <button
+              onClick={() => {
+                if (favoriteIDs.includes(product.id)) {
+                  removeFromFavorites(product.id);
+                } else {
+                  addToFavorites(product.id);
+                }
+              }}
+              className="absolute top-[6px] right-2"
+            >
+              <span
+                className={`text-4xl cursor-pointer transition-colors ${
+                  favoriteIDs.includes(product.id)
+                    ? "text-red-500"
+                    : "text-slate-400"
+                }`}
+              >
+                ♥
+              </span>
+              
+            </button>
         </div>
 
         {/* Product Info */}

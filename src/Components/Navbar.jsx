@@ -4,8 +4,10 @@ import axios from 'axios';
 
 import { useContext } from "react";
 import { CartContext } from "../Contexts/CartContext";
+import { FavoritesContext } from "../Contexts/FavoritesContext";
 export default function Navbar() {
   const { cartCount } = useContext(CartContext);
+  const { favoriteIDs } = useContext(FavoritesContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [name, setName] = useState("")
@@ -57,11 +59,11 @@ export default function Navbar() {
             </label>
           </div>
           <div className="flex justify-between items-center gap-5 md:gap-10">
-          <Link to="/ProductDetails">
+          <Link to="/FavoritePage">
             <button className=" relative text-black">
               <i className="fa-solid fa-heart"></i>
               <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
-                0
+                {favoriteIDs.length}
               </span>
             </button>
           </Link>
@@ -79,6 +81,7 @@ export default function Navbar() {
             <Link to="/login"  className="hidden lg:flex justify-center items-center text-black cursor-pointer">
               <i className="fa-solid fa-user"></i>
               <p>Login/ Sign Up</p>
+
             </Link>
             )}
           </div>

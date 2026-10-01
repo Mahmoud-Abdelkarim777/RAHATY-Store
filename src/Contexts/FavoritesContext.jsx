@@ -1,0 +1,33 @@
+import { createContext, useState } from "react";
+
+export const FavoritesContext = createContext();
+
+export default function FavoritesProvider({ children }) {
+  const [favoriteIDs, setFavoriteIDs] = useState([]);
+
+  const addToFavorites = (productId) => {
+    setFavoriteIDs((prevIDs) => {
+      if (prevIDs.includes(productId)) {
+        return prevIDs;
+      }
+
+      return [...prevIDs, productId];
+    });
+  };
+
+  const removeFromFavorites = (productId) => {
+    setFavoriteIDs((prevIDs) => prevIDs.filter((id) => id !== productId));
+  };
+
+  return (
+    <FavoritesContext.Provider
+      value={{
+        favoriteIDs,
+        addToFavorites,
+        removeFromFavorites,
+      }}
+    >
+      {children}
+    </FavoritesContext.Provider>
+  );
+}
