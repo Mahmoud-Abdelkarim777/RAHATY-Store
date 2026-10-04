@@ -12,6 +12,7 @@ import Login from './Pages/Login';
 import Products from './Pages/Products';
 import FavoritePage from './Pages/FavoritePage';
 import Cart from './Pages/Cart';
+import ProductDetails from './Pages/ProductDetails';
 
 // context
 function Home() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/products" element={<Products/>}/>
         <Route path="/FavoritePage" element={<FavoritePage/>}/>
         <Route path="/Cart" element={<Cart/>}/>
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
   );
 }

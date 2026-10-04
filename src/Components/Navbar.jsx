@@ -1,35 +1,38 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 import { useContext } from "react";
 import { CartContext } from "../Contexts/CartContext";
 import { FavoritesContext } from "../Contexts/FavoritesContext";
+import SearchOverlay from "./SearchOverlay";
 export default function Navbar() {
   const { cartCount } = useContext(CartContext);
   const { favoriteIDs } = useContext(FavoritesContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
   useEffect(() => {
-    const ACCESS_TOKEN = localStorage.getItem("accessToken")
+    const ACCESS_TOKEN = localStorage.getItem("accessToken");
 
     if (!ACCESS_TOKEN) {
-    return;
-  }
-    axios.get("https://dummyjson.com/auth/me", {
-      headers: {
-    'Authorization': `Bearer ${ACCESS_TOKEN}`
-  }
-    })
-    .then((res) => {
-      const name = res.data.firstName
-      setName(name)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-  }, [])
+      return;
+    }
+    axios
+      .get("https://dummyjson.com/auth/me", {
+        headers: {
+          Authorization: `Bearer ${ACCESS_TOKEN}`,
+        },
+      })
+      .then((res) => {
+        const name = res.data.firstName;
+        setName(name);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   return (
     <>
       <nav className="container mx-auto px-4 bg-cyan-500 py-4 flex md:block items-start md:items-center justify-between relative">
@@ -51,7 +54,8 @@ export default function Navbar() {
                 <i className="fa-solid fa-magnifying-glass text-slate-400"></i>
               </span>
               <input
-                className=" placeholder:italic placeholder:text-slate-400 block bg-white text-black w-[450px] border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                onFocus={() => setSearchOpen(true)}
+                className="placeholder:italic placeholder:text-slate-400 block bg-white text-black w-[450px] border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 placeholder="Search for anything..."
                 type="text"
                 name="search"
@@ -59,30 +63,32 @@ export default function Navbar() {
             </label>
           </div>
           <div className="flex justify-between items-center gap-5 md:gap-10">
-          <Link to="/FavoritePage">
-            <button className=" relative text-black">
-              <i className="fa-solid fa-heart"></i>
-              <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
-                {favoriteIDs.length}
-              </span>
-            </button>
-          </Link>
-          <Link to="/Cart">
-            <button className=" relative text-black">
-              <i className="fa-solid fa-cart-shopping"></i>
-              <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
-                {cartCount}
-              </span>
-            </button>
-          </Link>
+            <Link to="/FavoritePage">
+              <button className=" relative text-black">
+                <i className="fa-solid fa-heart"></i>
+                <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
+                  {favoriteIDs.length}
+                </span>
+              </button>
+            </Link>
+            <Link to="/Cart">
+              <button className=" relative text-black">
+                <i className="fa-solid fa-cart-shopping"></i>
+                <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
+                  {cartCount}
+                </span>
+              </button>
+            </Link>
             {name ? (
               <span className="text-xl font-semibold">Hello {name}!</span>
             ) : (
-            <Link to="/login"  className="hidden lg:flex justify-center items-center text-black cursor-pointer">
-              <i className="fa-solid fa-user"></i>
-              <p>Login/ Sign Up</p>
-
-            </Link>
+              <Link
+                to="/login"
+                className="hidden lg:flex justify-center items-center text-black cursor-pointer"
+              >
+                <i className="fa-solid fa-user"></i>
+                <p>Login/ Sign Up</p>
+              </Link>
             )}
           </div>
         </div>
@@ -179,7 +185,10 @@ export default function Navbar() {
               About
             </a>
             <div className="px-3">
-              <Link to="/login" className="lg:hidden flex justify-center items-center gap-5">
+              <Link
+                to="/login"
+                className="lg:hidden flex justify-center items-center gap-5"
+              >
                 <i className="fa-solid fa-user"></i>
                 <p>Login/ Sign Up</p>
               </Link>
@@ -248,6 +257,7 @@ export default function Navbar() {
           About
         </a>
       </div>
+      {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
     </>
   );
 }
