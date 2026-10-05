@@ -21,7 +21,7 @@ export default function Category() {
         className="SwiperSlide height border shadow-sm border-slate-200 rounded-lg"
         key={category.slug}
       >
-        <Link to="/Products">
+        <Link to={`/products/category/${category.slug}`}>
           <div className="flex flex-col justify-center items-center">
             <img
               className="category-img w-[120px] h-[120px] rounded-full"

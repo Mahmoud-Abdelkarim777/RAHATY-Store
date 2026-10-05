@@ -32,6 +32,7 @@ export default function CategoriesProvider({ children }) {
       });
   }, []);
 
+  
   return (
     <CategoriesContext.Provider value={{ categories }}>
       {children}
