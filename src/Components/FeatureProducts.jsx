@@ -43,12 +43,13 @@ export default function FeatureProducts() {
         <div className="relative flex flex-col h-full bg-white shadow-sm border border-slate-200 rounded-lg">
           {/* Image */}
           <div className="relative m-2.5 overflow-hidden rounded-md">
-            <img
-              src={item.thumbnail}
-              alt={item.title}
-              className="w-full h-full object-cover"
-            />
-
+            <Link to={`/product/${item.id}`}>
+              <img
+                src={item.thumbnail}
+                alt={item.title}
+                className="w-full h-full object-cover"
+              />
+            </Link>
             <span className="absolute top-0 left-0 px-2 font-semibold text-white bg-red-500 rounded-full">
               {Math.round(item.discountPercentage)}%
             </span>
@@ -71,35 +72,34 @@ export default function FeatureProducts() {
               >
                 ♥
               </span>
-              
             </button>
           </div>
 
           {/* Content */}
           <div className="px-2 flex-grow">
-            <h6 className="mb-2 text-slate-800 text-base font-semibold">
-              {item.title}
-            </h6>
+            <Link to={`/product/${item.id}`}>
+              <h6 className="mb-2 text-slate-800 text-base font-semibold">
+                {item.title}
+              </h6>
+              <p className="text-slate-600 leading-normal font-light">
+                <i className="fa-solid fa-star text-yellow-500"></i>
 
-            <p className="text-slate-600 leading-normal font-light">
-              <i className="fa-solid fa-star text-yellow-500"></i>
+                <span>
+                  {" "}
+                  {item.rating} {reviewCount}
+                </span>
+              </p>
+              {/* Price */}
+              <div className="mt-3">
+                <span className="line-through text-slate-600 font-semibold">
+                  ${item.price}
+                </span>
 
-              <span>
-                {" "}
-                {item.rating} {reviewCount}
-              </span>
-            </p>
-
-            {/* Price */}
-            <div className="mt-3">
-              <span className="line-through text-slate-600 font-semibold">
-                ${item.price}
-              </span>
-
-              <span className="text-xl text-red-500 font-bold ms-2">
-                ${finalPrice.toFixed(2)}
-              </span>
-            </div>
+                <span className="text-xl text-red-500 font-bold ms-2">
+                  ${finalPrice.toFixed(2)}
+                </span>
+              </div>
+            </Link>
           </div>
           {/* Add To Cart */}
           <div

@@ -9,9 +9,9 @@ import Navbar from "../Components/Navbar";
 export default function ProductDetails() {
   const { cartID, addToCart, removeFromCart } = useContext(CartContext);
 
-  const { favoriteIDs, addToFavorites, removeFromFavorites } =
-    useContext(FavoritesContext);
+  const { favoriteIDs, addToFavorites, removeFromFavorites } = useContext(FavoritesContext);
   const { id } = useParams();
+  
 
   const [product, setProduct] = useState(null);
 
@@ -19,7 +19,6 @@ export default function ProductDetails() {
     axios
       .get(`https://dummyjson.com/products/${id}`)
       .then((response) => {
-        console.log("Product:", response.data);
         setProduct(response.data);
       })
       .catch((error) => {

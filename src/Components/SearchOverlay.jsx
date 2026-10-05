@@ -13,13 +13,11 @@ export default function SearchOverlay({ onClose }) {
       setProducts([]);
       return;
     }
-    console.log("Search Value:", searchValue);
     setLoading(true);
 
     axios
-      .get(`https://dummyjson.com/products/search?q=${searchValue}&limit=6`)
+      .get(`https://dummyjson.com/products/search?q=${searchValue}`)
       .then((response) => {
-        console.log("API Response:", response.data);
         setProducts(response.data.products);
       })
       .catch((error) => {

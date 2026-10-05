@@ -20,7 +20,7 @@ export default function Products() {
       >
         {/* Product Image */}
         <div className="relative h-56 m-2.5 overflow-hidden rounded-md">
-          <Link to="/ProductDetails">
+          <Link to={`/product/${product.id}`}>
             <img
               src={product.thumbnail}
               alt={product.title}
@@ -58,7 +58,7 @@ export default function Products() {
         </div>
 
         {/* Product Info */}
-        <Link to="/ProductDetails">
+        <Link to={`/product/${product.id}`}>
           <div className="p-4 flex-grow">
             <h2 className="text-lg font-semibold text-slate-900 line-clamp-1">
               {product.title}

@@ -104,7 +104,7 @@ export default function Cart() {
 
   if (products.length === 0) {
     return (
-      <div className="min-h-[500px] flex flex-col justify-center items-center text-center">
+      <div className="container mx-auto px-4 min-h-[500px] flex flex-col justify-center items-center text-center">
         <i className="fa-solid fa-cart-shopping text-6xl text-slate-300 mb-5"></i>
 
         <h2 className="text-2xl font-bold text-slate-800">
