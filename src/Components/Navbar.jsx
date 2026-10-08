@@ -13,6 +13,7 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [name, setName] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
+  const [limtedCat, setLimtedCat] = useState([]);
   useEffect(() => {
     const ACCESS_TOKEN = localStorage.getItem("accessToken");
 
@@ -33,6 +34,29 @@ export default function Navbar() {
         console.error(error);
       });
   }, []);
+  useEffect(() => {
+    axios
+      .get("https://dummyjson.com/products/category-list?limit=8")
+      .then((res) => {
+        const limtedData = res.data.slice(0, 6);
+        console.log(limtedData);
+        setLimtedCat(limtedData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+  const cat = limtedCat.map((c) => {
+    return (
+      <Link key={c}
+        to={`products/category/${c}`}
+        href="#"
+        className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50"
+      >
+        {c}
+      </Link>
+    );
+  });
   return (
     <>
       <nav className="container mx-auto px-4 bg-cyan-500 py-4 flex md:block items-start md:items-center justify-between relative">
@@ -224,30 +248,7 @@ export default function Navbar() {
             </svg>
           </button>
           <div className="absolute top-full left-0 mt-1 w-44 bg-white border border-zinc-200 rounded-xl shadow-lg py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50"
-            >
-              Landing Pages
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50"
-            >
-              About Pages
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50"
-            >
-              Contact Pages
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50"
-            >
-              Blog Pages
-            </a>
+            {cat}
           </div>
         </div>
         <a href="#" className="text-sm text-black hover:text-zinc-800">
