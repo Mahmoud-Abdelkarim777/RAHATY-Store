@@ -37,7 +37,7 @@ export default function Category() {
 
   return (
     <>
-      <div className="container mx-auto px-4">
+      <section className="container mx-auto px-4">
         <div className="flex justify-between items-center mt-5">
           <div>
             <p className="text-2xl font-bold">Shop by Category</p>
@@ -87,7 +87,7 @@ export default function Category() {
             {Categories}
           </Swiper>
         </div>
-      </div>
+      </section>
     </>
   );
 }

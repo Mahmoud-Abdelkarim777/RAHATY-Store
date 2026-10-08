@@ -48,13 +48,14 @@ export default function Navbar() {
   }, []);
   const cat = limtedCat.map((c) => {
     return (
-      <Link key={c}
-        to={`products/category/${c}`}
-        href="#"
-        className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50"
-      >
-        {c}
-      </Link>
+      <button key={c} >
+        <Link
+          to={`/products/category/${c}`}
+          className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50"
+        >
+          {c}
+        </Link>
+      </button>
     );
   });
   return (
@@ -133,22 +134,22 @@ export default function Navbar() {
         </button>
 
         {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white border-t border-zinc-200 flex flex-col p-5 gap-1 md:hidden z-50">
+          <div className="absolute top-full left-0 w-full bg-white border-t font-bold border-zinc-200 flex flex-col p-5 gap-1 md:hidden z-50">
             <Link
               to="/"
-              className="px-4 py-2.5 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50"
+              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50"
             >
               Home
             </Link>
             <Link
               to="/products"
-              className="px-4 py-2.5 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50"
+              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50"
             >
               Products
             </Link>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center justify-between w-full px-4 py-2.5 rounded-lg text-sm text-zinc-800 hover:bg-zinc-50 bg-transparent border-0 cursor-pointer"
+              className="flex items-center justify-between w-full px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50 bg-transparent border-0 cursor-pointer"
             >
               Categories
               <svg
@@ -170,41 +171,18 @@ export default function Navbar() {
             </button>
             {dropdownOpen && (
               <div className="flex flex-col pl-4">
-                <a
-                  href="#"
-                  className="px-4 py-2 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50"
-                >
-                  Landing Pages
-                </a>
-                <a
-                  href="#"
-                  className="px-4 py-2 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50"
-                >
-                  About Pages
-                </a>
-                <a
-                  href="#"
-                  className="px-4 py-2 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50"
-                >
-                  Contact Pages
-                </a>
-                <a
-                  href="#"
-                  className="px-4 py-2 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50"
-                >
-                  Blog Pages
-                </a>
+                {cat}
               </div>
             )}
             <a
               href="#"
-              className="px-4 py-2.5 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50"
+              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50"
             >
               Deals
             </a>
             <a
               href="#"
-              className="px-4 py-2.5 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50"
+              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50"
             >
               About
             </a>
@@ -228,7 +206,7 @@ export default function Navbar() {
           Products
         </Link>
         <div className="relative group">
-          <button className="flex items-center gap-1.5 text-sm text-zinc-800 cursor-pointer bg-transparent border-0 py-2">
+          <button className="flex items-center gap-1.5 text-sm text-black hover:text-zinc-800 cursor-pointer bg-transparent border-0 py-2">
             Categories
             <svg
               className="transition-transform group-hover:rotate-180"
@@ -251,12 +229,12 @@ export default function Navbar() {
             {cat}
           </div>
         </div>
-        <a href="#" className="text-sm text-black hover:text-zinc-800">
+        <Link to="/deals" className="text-sm text-black hover:text-zinc-800">
           Deals
-        </a>
-        <a href="#" className="text-sm text-black hover:text-zinc-800">
+        </Link>
+        <Link to="/about" className="text-sm text-black hover:text-zinc-800">
           About
-        </a>
+        </Link>
       </div>
       {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
     </>

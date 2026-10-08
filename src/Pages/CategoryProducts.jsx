@@ -22,7 +22,7 @@ export default function CategoryProducts() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [slug]);
 
   const AllProducts = products.map((product) => {
     return (

@@ -12,7 +12,7 @@ export default function ProductsProvider({ children }) {
     setLoading(true);
 
     axios
-      .get("https://dummyjson.com/products?limit=8")
+      .get("https://dummyjson.com/products")
       .then((response) => {
         setProducts(response.data.products);
       })

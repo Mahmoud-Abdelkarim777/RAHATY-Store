@@ -20,19 +20,19 @@ export default function Footer() {
                 better shopping experience.
               </p>
               <div className="icons flex items-center gap-3">
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-facebook"></i>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-instagram"></i>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-x-twitter"></i>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="#" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-youtube"></i>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="#" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-pinterest"></i>
                 </a>
               </div>

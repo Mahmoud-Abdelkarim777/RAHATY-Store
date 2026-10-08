@@ -123,7 +123,7 @@ export default function FeatureProducts() {
   });
   return (
     <>
-      <div className="container mx-auto px-4 mt-5">
+      <section className="container mx-auto px-4 mt-5">
         <div className="flex justify-between items-center mt-5">
           <div>
             <p className="text-2xl font-bold">Feature Products</p>
@@ -168,7 +168,7 @@ export default function FeatureProducts() {
         >
           {AllItemsFeature}
         </Swiper>
-      </div>
+      </section>
     </>
   );
 }

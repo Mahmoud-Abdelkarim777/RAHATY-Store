@@ -49,7 +49,7 @@ export default function Hero() {
                   <br /> something made for you.
                 </p>
                 <Link to="/Products">
-                  <button className="text-white px-4 py-3 mt-5 bg-blue-900 hover:bg-blue-950  rounded-full flex items-center justify-center">
+                  <button className="min-h-[48px] text-white px-4 py-3 mt-5 bg-blue-900 hover:bg-blue-950  rounded-full flex items-center justify-center">
                     Shop Now{" "}
                     <i className="fa-solid fa-arrow-right-long ms-3"></i>
                   </button>
@@ -74,7 +74,7 @@ export default function Hero() {
                   <br /> technology.
                 </p>
                 <Link to="/Products">
-                  <button className="text-white px-4 py-3 mt-5 bg-blue-900 hover:bg-blue-950  rounded-full flex items-center justify-center">
+                  <button className="min-h-[48px] text-white px-4 py-3 mt-5 bg-blue-900 hover:bg-blue-950  rounded-full flex items-center justify-center">
                     Explore Electronics{" "}
                     <i className="fa-solid fa-arrow-right-long ms-3"></i>
                   </button>
@@ -99,7 +99,7 @@ export default function Hero() {
                   <br /> fresh arrivals.
                 </p>
                 <Link to="/Products">
-                  <button className="text-white px-4 py-3 mt-5 bg-blue-900 hover:bg-blue-950  rounded-full flex items-center justify-center">
+                  <button className="min-h-[48px] text-white px-4 py-3 mt-5 bg-blue-900 hover:bg-blue-950  rounded-full flex items-center justify-center">
                     Explore New Arrivals{" "}
                     <i className="fa-solid fa-arrow-right-long ms-3"></i>
                   </button>
@@ -124,7 +124,7 @@ export default function Hero() {
                   <br /> you'll love.
                 </p>
                 <Link to="/Products">
-                  <button className="text-white px-4 py-3 mt-5 bg-blue-900 hover:bg-blue-950  rounded-full flex items-center justify-center">
+                  <button className="min-h-[48px] text-white px-4 py-3 mt-5 bg-blue-900 hover:bg-blue-950  rounded-full flex items-center justify-center">
                     View Deals{" "}
                     <i className="fa-solid fa-arrow-right-long ms-3"></i>
                   </button>
