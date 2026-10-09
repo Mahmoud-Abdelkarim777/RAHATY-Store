@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [quantities, setQuantities] = useState({});
 
   const { cartID, removeFromCart } = useContext(CartContext);
   useEffect(() => {
@@ -33,6 +34,18 @@ export default function Cart() {
         setLoading(false);
       });
   }, [cartID]);
+  const handleIncrease = (productId) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [productId]: (prev[productId] || 1) + 1, // This technique is called a Computed Property Name.
+    }));
+  };
+  const handleDecrease = (productId) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [productId]: Math.max(1, (prev[productId] || 1) - 1),
+    }));
+  };
   const AllProducts = products.map((product) => {
     return (
       <div
@@ -59,7 +72,12 @@ export default function Cart() {
                   {product.category}
                 </p>
               </div>
-              <button onClick={() => {removeFromCart(product.id)}} className="text-red-500 hover:text-red-700">
+              <button
+                onClick={() => {
+                  removeFromCart(product.id);
+                }}
+                className="text-red-500 hover:text-red-700"
+              >
                 <i className="fa-solid fa-trash"></i>
               </button>
             </div>
@@ -67,9 +85,22 @@ export default function Cart() {
           <div className="flex justify-between items-center mt-5">
             {/* Quantity */}
             <div className="flex items-center border border-slate-300 rounded-lg overflow-hidden">
-              <button className="px-3 py-1.5 hover:bg-slate-100">-</button>
-              <span className="px-4 font-semibold">1</span>
-              <button className="px-3 py-1.5 hover:bg-slate-100">+</button>
+              <button
+                onClick={() => handleDecrease(product.id)}
+                disabled={(quantities[product.id] || 1) === 1}
+                className="px-3 py-1.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                -
+              </button>
+              <span className="px-4 font-semibold">
+                {quantities[product.id] || 1}
+              </span>
+              <button
+                onClick={() => handleIncrease(product.id)}
+                className="px-3 py-1.5 hover:bg-slate-100"
+              >
+                +
+              </button>
             </div>
             {/* Price */}
             <div className="text-right">
@@ -86,11 +117,15 @@ export default function Cart() {
     );
   });
   const subTotal = products.reduce(
-    (total, product) => total + product.price,
+    (total, product) => total + product.price * (quantities[product.id] || 1),
     0,
   );
   const discount = products.reduce((total, product) => {
-    return total + (product.price * product.discountPercentage) / 100;
+    const quantity = quantities[product.id] || 1;
+
+    return (
+      total + (product.price * product.discountPercentage * quantity) / 100
+    );
   }, 0);
   const shipping = subTotal > 0 ? 10 : 0;
   const total = subTotal + shipping - discount;
@@ -115,7 +150,10 @@ export default function Cart() {
           Looks like you haven't added anything to your cart yet.
         </p>
 
-        <Link to="/" className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition">
+        <Link
+          to="/"
+          className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition"
+        >
           Continue Shopping
         </Link>
       </div>
