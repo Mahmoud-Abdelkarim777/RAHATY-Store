@@ -108,7 +108,7 @@ export default function CategoryProducts() {
                 addToCart(product.id);
               }
             }}
-            className="w-full mt-4 bg-black hover:bg-slate-800 text-white py-2.5 rounded-lg font-semibold  transition"
+            className="w-full mt-4 hover:bg-black bg-slate-900 text-white py-2.5 rounded-lg font-semibold  transition"
           >
             <i className="fa-solid fa-cart-shopping me-2"></i>
             {cartID.includes(product.id) ? "Remove from Cart" : "Add to Cart"}

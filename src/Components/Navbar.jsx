@@ -48,10 +48,10 @@ export default function Navbar() {
   }, []);
   const cat = limtedCat.map((c) => {
     return (
-      <button key={c} >
+      <button key={c}>
         <Link
           to={`/products/category/${c}`}
-          className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50"
+          className="block px-4 py-2 text-sm text-black hover:text-zinc-500 hover:bg-zinc-200 "
         >
           {c}
         </Link>
@@ -60,17 +60,17 @@ export default function Navbar() {
   });
   return (
     <>
-      <nav className="container mx-auto px-4 bg-cyan-500 py-4 flex md:block items-start md:items-center justify-between relative">
+      <nav className="container mx-auto px-4 bg-slate-900 text-white py-4 flex md:block items-start md:items-center justify-between relative">
         <div className="flex flex-wrap items-center justify-between gap-5">
           <div className="text-black text-3xl font-bold">
-            <a
-              href="#"
-              className="flex items-center gap-2 text-xl md:text-3xl font-bold tracking-tight text-black transition-opacity hover:opacity-90"
+            <Link
+              to="/"
+              className="flex items-center gap-2 text-xl md:text-3xl font-bold tracking-tight text-white transition-opacity hover:opacity-90"
             >
               <i className="fa-solid fa-bag-shopping "></i>
               <span>RAHATY</span>
-              <span className="font-normal text-zinc-800">Store</span>
-            </a>
+              <span className="font-normal text-gray-400 ">Store</span>
+            </Link>
           </div>
           <div className="hidden md:block">
             <label className="relative block">
@@ -89,7 +89,7 @@ export default function Navbar() {
           </div>
           <div className="flex justify-between items-center gap-5 md:gap-10">
             <Link to="/FavoritePage">
-              <button className=" relative text-black">
+              <button className=" relative text-white">
                 <i className="fa-solid fa-heart"></i>
                 <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
                   {favoriteIDs.length}
@@ -97,7 +97,7 @@ export default function Navbar() {
               </button>
             </Link>
             <Link to="/Cart">
-              <button className=" relative text-black">
+              <button className=" relative text-white">
                 <i className="fa-solid fa-cart-shopping"></i>
                 <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
                   {cartCount}
@@ -109,7 +109,7 @@ export default function Navbar() {
             ) : (
               <Link
                 to="/login"
-                className="hidden lg:flex justify-center items-center text-black cursor-pointer"
+                className="hidden lg:flex justify-center items-center text-white cursor-pointer"
               >
                 <i className="fa-solid fa-user"></i>
                 <p>Login/ Sign Up</p>
@@ -123,33 +123,33 @@ export default function Navbar() {
           className="md:hidden flex flex-col gap-1.5 cursor-pointer bg-transparent border-0 p-1"
         >
           <span
-            className={`block w-6 h-0.5 bg-zinc-800 transition-transform ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
+            className={`block w-6 h-0.5 bg-white transition-transform ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
           ></span>
           <span
-            className={`block w-6 h-0.5 bg-zinc-800 transition-opacity ${menuOpen ? "opacity-0" : ""}`}
+            className={`block w-6 h-0.5 bg-white transition-opacity ${menuOpen ? "opacity-0" : ""}`}
           ></span>
           <span
-            className={`block w-6 h-0.5 bg-zinc-800 transition-transform ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+            className={`block w-6 h-0.5 bg-white transition-transform ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
           ></span>
         </button>
 
         {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white border-t font-bold border-zinc-200 flex flex-col p-5 gap-1 md:hidden z-50">
+          <div className="absolute top-full left-0 w-full bg-white border-t font-bold border-zinc-200 rounded-lg flex flex-col p-5 gap-1 md:hidden z-50">
             <Link
               to="/"
-              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50"
+              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-200"
             >
               Home
             </Link>
             <Link
               to="/products"
-              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50"
+              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-200"
             >
               Products
             </Link>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center justify-between w-full px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50 bg-transparent border-0 cursor-pointer"
+              className="flex items-center justify-between w-full px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-200 bg-transparent border-0 cursor-pointer"
             >
               Categories
               <svg
@@ -169,23 +169,21 @@ export default function Navbar() {
                 />
               </svg>
             </button>
-            {dropdownOpen && (
-              <div className="flex flex-col pl-4">
-                {cat}
-              </div>
-            )}
-            <a
-              href="#"
-              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50"
+            {dropdownOpen && <div className="flex flex-col pl-4">
+            {cat}
+            </div>}
+            <Link
+              to="/deals"
+              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-200"
             >
               Deals
-            </a>
-            <a
-              href="#"
-              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-50"
+            </Link>
+            <Link
+              to="/about"
+              className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-200"
             >
               About
-            </a>
+            </Link>
             <div className="px-3">
               <Link
                 to="/login"
@@ -198,15 +196,15 @@ export default function Navbar() {
           </div>
         )}
       </nav>
-      <div className="hidden md:flex items-center gap-8 font-bold container mx-auto px-4 bg-cyan-500">
-        <Link to="/" className="text-sm text-black hover:text-zinc-800">
+      <div className="hidden md:flex items-center gap-8 font-bold container mx-auto px-4 bg-slate-900 text-white">
+        <Link to="/" className="text-sm text-white hover:text-gray-300">
           Home
         </Link>
-        <Link to="/products" className="text-sm text-black hover:text-zinc-800">
+        <Link to="/products" className="text-sm text-white hover:text-gray-300">
           Products
         </Link>
         <div className="relative group">
-          <button className="flex items-center gap-1.5 text-sm text-black hover:text-zinc-800 cursor-pointer bg-transparent border-0 py-2">
+          <button className="flex items-center gap-1.5 text-sm text-white hover:text-gray-300 cursor-pointer bg-transparent border-0 py-2">
             Categories
             <svg
               className="transition-transform group-hover:rotate-180"
@@ -229,10 +227,10 @@ export default function Navbar() {
             {cat}
           </div>
         </div>
-        <Link to="/deals" className="text-sm text-black hover:text-zinc-800">
+        <Link to="/deals" className="text-sm text-white hover:text-gray-300">
           Deals
         </Link>
-        <Link to="/about" className="text-sm text-black hover:text-zinc-800">
+        <Link to="/about" className="text-sm text-white hover:text-gray-300">
           About
         </Link>
       </div>

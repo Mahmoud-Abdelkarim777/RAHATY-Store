@@ -12,7 +12,7 @@ export default function SpecialOffer() {
               On selected electronics and accessories.
             </p>
             <Link to="/Products">
-              <button className="flex items-center justify-center text-white font-semibold bg-slate-900 px-4 py-1 mt-2 rounded-full">
+              <button className="flex items-center justify-center text-white font-semibold bg-slate-900 hover:bg-black px-4 py-1 mt-2 rounded-full">
                 Shop Now
                 <i className="fa-solid fa-arrow-right-long ms-3"></i>
               </button>

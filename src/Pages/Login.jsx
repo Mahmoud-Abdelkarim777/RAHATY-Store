@@ -6,41 +6,51 @@ export default function Login() {
   let navigate = useNavigate();
   const [inputValue, setInputVale] = useState({
     username: "",
-    password: ""
-  })
+    password: "",
+  });
   const handleInputValu = (e) => {
     setInputVale({
-    ...inputValue,
-    [e.target.name]: e.target.value,
-  });
-  }
-const handleSignIn = () => {
-  const params = {
-    // username: inputValue.username,
-    // password:dummy inputValue.password,
-    username: "emilys",
-    password: "emilyspass",
-    expiresInMins: 30,
-  }
-  axios.post("https://dummyjson.com/auth/login", params,
-    {
-    headers: { 'Content-Type': 'application/json' },
-  })
-  .then((response) => {
-    console.log(response);
-    const {accessToken, refreshToken} = response.data
-    localStorage.setItem("accessToken", accessToken)
-    localStorage.setItem("refreshToken", refreshToken)
-    navigate("/")
-  }).catch((error) => {
-    console.error(error)
-  })
-}
+      ...inputValue,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSignIn = () => {
+    const params = {
+      username: inputValue.username,
+      password: inputValue.password,
+      // username: "emilys",
+      // password: "emilyspass",
+      expiresInMins: 30,
+    };
+    axios
+      .post("https://dummyjson.com/auth/login", params, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        console.log(response);
+        const { accessToken, refreshToken } = response.data;
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <>
-      <div className="w-full h-screen flex items-center justify-center">
+      <div className="w-full h-screen flex flex-col items-center justify-center">
+        <div className="mb-5 w-full max-w-xs  text-sm">
+          usernamer: emilys
+          <br />
+          password: emilyspass
+          <hr className="h-1 w-full my-1 bg-slate-900" />
+          usernmae: sophiab
+          <br />
+          password: sophiabpass
+        </div>
         <div className="w-full max-w-xs">
-          <form className="bg-slate-900 shadow rounded px-8 pt-6 pb-8 mb-4">
+          <form className="bg-slate-900 shadow rounded-lg px-8 pt-6 pb-8 mb-4">
             <div className="mb-4">
               <label
                 className="block text-white text-sm font-bold mb-2"
@@ -49,9 +59,9 @@ const handleSignIn = () => {
                 Username
               </label>
               <input
-              value={inputValue.username}
-              onChange={handleInputValu}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-slate-900 leading-tight focus:outline-none focus:shadow-outline"
+                value={inputValue.username}
+                onChange={handleInputValu}
+                className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-slate-900 leading-tight focus:outline-none focus:shadow-outline"
                 id="username"
                 name="username"
                 type="text"
@@ -66,28 +76,28 @@ const handleSignIn = () => {
                 Password
               </label>
               <input
-              value={inputValue.password}
-              onChange={handleInputValu}
-                className="shadow appearance-none border  rounded w-full py-2 px-3 text-slate-900 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                value={inputValue.password}
+                onChange={handleInputValu}
+                className="shadow appearance-none border  rounded-lg w-full py-2 px-3 text-slate-900 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 name="password"
                 type="password"
                 placeholder="******************"
               />
-              {/* <p className="text-red-500 text-xs italic border-red-500">
+              <p className="text-red-500 text-xs italic border-red-500">
                 Please choose a password.
-              </p> */}
+              </p>
             </div>
             <div className="flex items-center justify-between">
               <button
-              onClick={handleSignIn}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onClick={handleSignIn}
+                className="bg-white hover:bg-blue-500 transition-all ease-out text-slate-900 font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
                 type="button"
               >
                 Sign In
               </button>
               <a
-                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                className="inline-block align-baseline font-bold text-sm text-white hover:text-blue-500"
                 href="#"
               >
                 Forgot Password?
@@ -95,7 +105,7 @@ const handleSignIn = () => {
             </div>
           </form>
           <p className="text-center text-gray-500 text-xs">
-            &copy;2020 Acme Corp. All rights reserved.
+            &copy; {new Date().getFullYear()} MAHMOUD. All rights reserved.
           </p>
         </div>
       </div>

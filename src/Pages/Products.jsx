@@ -89,7 +89,7 @@ export default function Products() {
             }else{
               addToCart(product.id)
             }
-          }} className="w-full bg-black text-white py-2.5 rounded-lg hover:bg-slate-800 transition">
+          }} className="w-full hover:bg-black bg-slate-900 text-white py-2.5 rounded-lg  transition">
             {cartID.includes(product.id) ? "remove from Cart" : "Add to Cart"}
           </button>
         </div>

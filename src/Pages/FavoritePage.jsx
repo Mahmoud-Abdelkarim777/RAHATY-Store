@@ -116,7 +116,7 @@ export default function FavoritePage() {
                 addToCart(product.id);
               }
             }}
-            className="w-full mt-4 bg-black text-white py-2.5 rounded-lg hover:bg-slate-800 transition"
+            className="w-full mt-4 hover:bg-black bg-slate-900 text-white py-2.5 rounded-lg  transition"
           >
             <i className="fa-solid fa-cart-shopping me-2"></i>
             {cartID.includes(product.id) ? "Remove from Cart" : "Add to Cart"}
@@ -135,7 +135,7 @@ export default function FavoritePage() {
   if (products.length === 0) {
     return (
       <div className="min-h-[500px] flex flex-col justify-center items-center text-center">
-        <i className="fa-solid fa-heart text-6xl text-slate-300 mb-5"></i>
+        <i className="fa-solid fa-heart text-6xl text-slate-900 mb-5"></i>
 
         <h2 className="text-2xl font-bold text-slate-800">
           Your Favorite Page is Empty
@@ -147,7 +147,7 @@ export default function FavoritePage() {
 
         <Link
           to="/"
-          className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition"
+          className="mt-6 hover:bg-black bg-slate-900 text-white px-6 py-3 rounded-lg  transition"
         >
           Continue Shopping
         </Link>

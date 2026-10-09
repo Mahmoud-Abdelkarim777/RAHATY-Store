@@ -112,7 +112,7 @@ export default function FeatureProducts() {
             }}
             className="p-2 pt-0"
           >
-            <button className="w-full bg-black text-white py-2.5 rounded-lg hover:bg-slate-800 transition">
+            <button className="w-full bg-slate-900 hover:bg-black text-white py-2.5 rounded-lg  transition">
               <i className="fa-solid fa-cart-shopping text-white me-2"></i>
               {cartID.includes(item.id) ? "remove from Cart" : "Add to Cart"}
             </button>
@@ -130,7 +130,7 @@ export default function FeatureProducts() {
             <p className="text-zinc-500 font-semibold">Handpicked for you</p>
           </div>
           <Link to="/Products">
-            <button className="flex items-center text-blue-500">
+            <button className="flex items-center text-black font-semibold hover:text-slate-900 transition-all duration-300">
               View all Categories
               <i className="fa-solid fa-arrow-right-long ms-3"></i>
             </button>

@@ -80,7 +80,7 @@ export default function ProductDetails() {
                     addToCart(product.id);
                   }
                 }}
-                className="flex-1 bg-black text-white py-3 rounded-lg hover:bg-slate-800 transition"
+                className="flex-1 hover:bg-black text-white py-3 rounded-lg bg-slate-900 transition"
               >
                 <i className="fa-solid fa-cart-shopping me-2"></i>
 

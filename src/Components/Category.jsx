@@ -46,7 +46,7 @@ export default function Category() {
             </p>
           </div>
           <Link to="/Products">
-            <button className="flex items-center text-blue-500">
+            <button className="flex items-center text-black font-semibold hover:text-slate-900 transition-all duration-300">
               View all Categories
               <i className="fa-solid fa-arrow-right-long ms-3"></i>
             </button>
