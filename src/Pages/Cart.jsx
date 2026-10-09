@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [quantities, setQuantities] = useState({});
 
-  const { cartID, removeFromCart } = useContext(CartContext);
+  const { cartID, quantities, removeFromCart, handleIncrease, handleDecrease } =
+    useContext(CartContext);
   useEffect(() => {
     if (cartID.length === 0) {
       setProducts([]);
@@ -34,18 +34,7 @@ export default function Cart() {
         setLoading(false);
       });
   }, [cartID]);
-  const handleIncrease = (productId) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [productId]: (prev[productId] || 1) + 1, // This technique is called a Computed Property Name.
-    }));
-  };
-  const handleDecrease = (productId) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [productId]: Math.max(1, (prev[productId] || 1) - 1),
-    }));
-  };
+
   const AllProducts = products.map((product) => {
     return (
       <div
