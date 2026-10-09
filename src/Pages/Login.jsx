@@ -8,34 +8,75 @@ export default function Login() {
     username: "",
     password: "",
   });
+  const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleInputValu = (e) => {
     setInputVale({
       ...inputValue,
       [e.target.name]: e.target.value,
     });
   };
-  const handleSignIn = () => {
-    const params = {
-      username: inputValue.username,
-      password: inputValue.password,
-      // username: "emilys",
-      // password: "emilyspass",
-      expiresInMins: 30,
-    };
-    axios
-      .post("https://dummyjson.com/auth/login", params, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((response) => {
-        console.log(response);
-        const { accessToken, refreshToken } = response.data;
-        localStorage.setItem("accessToken", accessToken);
-        localStorage.setItem("refreshToken", refreshToken);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+
+    setApiError("");
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await axios.post(
+        "https://dummyjson.com/auth/login",
+        {
+          username: inputValue.username.trim(),
+          password: inputValue.password,
+          expiresInMins: 30,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      const { accessToken, refreshToken } = response.data;
+
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+
+      navigate("/");
+    } catch (error) {
+      if (error.response) {
+        setApiError(
+          error.response.data?.message || "Invalid username or password.",
+        );
+      } else {
+        setApiError(
+          "Unable to connect. Please check your internet connection.",
+        );
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!inputValue.username.trim()) {
+      newErrors.username = "Please enter your username.";
+    }
+
+    if (!inputValue.password) {
+      newErrors.password = "Please enter your password.";
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
   };
   return (
     <>
@@ -50,7 +91,10 @@ export default function Login() {
           password: sophiabpass
         </div>
         <div className="w-full max-w-xs">
-          <form className="bg-slate-900 shadow rounded-lg px-8 pt-6 pb-8 mb-4">
+          <form
+            onSubmit={handleSignIn}
+            className="bg-slate-900 shadow rounded-lg px-8 pt-6 pb-8 mb-4"
+          >
             <div className="mb-4">
               <label
                 className="block text-white text-sm font-bold mb-2"
@@ -67,6 +111,9 @@ export default function Login() {
                 type="text"
                 placeholder="Username"
               />
+              {errors.username && (
+                <p className="mt-1 text-xs text-red-400">{errors.username}</p>
+              )}
             </div>
             <div className="mb-6">
               <label
@@ -84,17 +131,22 @@ export default function Login() {
                 type="password"
                 placeholder="******************"
               />
-              <p className="text-red-500 text-xs italic border-red-500">
-                Please choose a password.
-              </p>
+              {errors.password && (
+                <p className="mt-1 text-xs text-red-400">{errors.password}</p>
+              )}
             </div>
+            {apiError && (
+              <p role="alert" className="mb-4 text-sm text-red-400">
+                {apiError}
+              </p>
+            )}
             <div className="flex items-center justify-between">
               <button
-                onClick={handleSignIn}
-                className="bg-white hover:bg-blue-500 transition-all ease-out text-slate-900 font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
-                type="button"
+                disabled={loading}
+                className="bg-white hover:bg-blue-500 transition-all ease-out text-slate-900 font-bold py-2 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                type="submit"
               >
-                Sign In
+                {loading ? "Signing in..." : "Sign In"}
               </button>
               <a
                 className="inline-block align-baseline font-bold text-sm text-white hover:text-blue-500"
