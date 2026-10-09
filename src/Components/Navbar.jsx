@@ -31,7 +31,12 @@ export default function Navbar() {
         setName(name);
       })
       .catch((error) => {
-        console.error(error);
+        if (error.response?.status === 401) {
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
+          setName("");
+          return;
+        } // Log only unexpected errors, not authentication failures. console.error("Failed to fetch user:", error);
       });
   }, []);
   useEffect(() => {
@@ -78,32 +83,49 @@ export default function Navbar() {
               <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                 <i className="fa-solid fa-magnifying-glass text-slate-400"></i>
               </span>
+
               <input
                 onFocus={() => setSearchOpen(true)}
                 className="placeholder:italic placeholder:text-slate-400 block bg-white text-black w-[450px] border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 placeholder="Search for anything..."
-                type="text"
+                type="search"
                 name="search"
+                id="search"
+                autoComplete="off"
               />
             </label>
           </div>
           <div className="flex justify-between items-center gap-5 md:gap-10">
-            <Link to="/FavoritePage">
-              <button className=" relative text-white">
-                <i className="fa-solid fa-heart"></i>
-                <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
-                  {favoriteIDs.length}
-                </span>
-              </button>
+            <Link
+              to="/FavoritePage"
+              aria-label={`Favorite products, ${favoriteIDs.length} items`}
+              className="relative inline-flex min-h-[48px] min-w-[48px] items-center justify-center text-white"
+            >
+              <i className="fa-solid fa-heart" aria-hidden="true"></i>
+
+              <span
+                aria-hidden="true"
+                className="flex items-center justify-center bg-red-700 text-white min-w-5 h-5 px-1 rounded-full absolute -top-1 -right-1 text-sm"
+              >
+                {favoriteIDs.length}
+              </span>
             </Link>
-            <Link to="/Cart">
-              <button className=" relative text-white">
-                <i className="fa-solid fa-cart-shopping"></i>
-                <span className="flex items-center justify-center bg-[red] text-white w-5 h-5 rounded-full absolute top-[-11px] right-[-11px] text-sm">
-                  {cartCount}
-                </span>
-              </button>
+
+            <Link
+              to="/Cart"
+              aria-label={`Shopping cart, ${cartCount} items`}
+              className="relative inline-flex min-h-[48px] min-w-[48px] items-center justify-center text-white"
+            >
+              <i className="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+
+              <span
+                aria-hidden="true"
+                className="flex items-center justify-center bg-red-700 text-white min-w-5 h-5 px-1 rounded-full absolute -top-1 -right-1 text-sm"
+              >
+                {cartCount}
+              </span>
             </Link>
+
             {name ? (
               <span className="text-xl font-semibold">Hello {name}!</span>
             ) : (
@@ -169,9 +191,7 @@ export default function Navbar() {
                 />
               </svg>
             </button>
-            {dropdownOpen && <div className="flex flex-col pl-4">
-            {cat}
-            </div>}
+            {dropdownOpen && <div className="flex flex-col pl-4">{cat}</div>}
             <Link
               to="/deals"
               className="px-4 py-2.5 rounded-lg text-sm text-black hover:text-zinc-500 hover:bg-zinc-200"

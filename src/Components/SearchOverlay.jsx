@@ -28,7 +28,7 @@ export default function SearchOverlay({ onClose }) {
       });
   }, [searchValue]);
   return (
-    <div className="fixed inset-0 z-50 bg-black/50">
+    <srction className="fixed inset-0 z-50 bg-black/50">
       <div className="bg-white min-h-screen">
         {/* Search Header */}
         <div className="border-b border-slate-200">
@@ -39,7 +39,10 @@ export default function SearchOverlay({ onClose }) {
                 <i className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
 
                 <input
-                  type="text"
+                  type="search"
+                  id="search"
+                  name="search"
+                  autoComplete="off"
                   placeholder="Search products..."
                   autoFocus
                   value={searchValue}
@@ -61,7 +64,6 @@ export default function SearchOverlay({ onClose }) {
 
         {/* Search Content */}
         <div className="container mx-auto px-4 ">
-
           {/* Products */}
           <section className="mt-5">
             <div className="flex items-center justify-between mb-4">
@@ -113,6 +115,6 @@ export default function SearchOverlay({ onClose }) {
           </section>
         </div>
       </div>
-    </div>
+    </srction>
   );
 }

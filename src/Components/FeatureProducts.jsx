@@ -45,12 +45,14 @@ export default function FeatureProducts() {
           <div className="relative m-2.5 overflow-hidden rounded-md">
             <Link to={`/product/${item.id}`}>
               <img
+                loading="lazy"
+                decoding="async"
                 src={item.thumbnail}
                 alt={item.title}
                 className="w-full h-full object-cover"
               />
             </Link>
-            <span className="absolute top-0 left-0 px-2 font-semibold text-white bg-red-500 rounded-full">
+            <span className="absolute top-0 left-0 px-2 font-semibold text-white bg-red-800 rounded-full">
               {Math.round(item.discountPercentage)}%
             </span>
             <button
@@ -78,9 +80,9 @@ export default function FeatureProducts() {
           {/* Content */}
           <div className="px-2 flex-grow">
             <Link to={`/product/${item.id}`}>
-              <h6 className="mb-2 text-slate-800 text-base font-semibold">
+              <p className="mb-2 text-slate-800 text-base font-semibold">
                 {item.title}
-              </h6>
+              </p>
               <p className="text-slate-600 leading-normal font-light">
                 <i className="fa-solid fa-star text-yellow-500"></i>
 

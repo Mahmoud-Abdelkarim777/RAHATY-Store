@@ -1,9 +1,9 @@
-import accessories from "../assets/images/accessories.png";
+import accessories from "../assets/images/accessories.webp";
 import { Link } from "react-router-dom";
 export default function SpecialOffer() {
   return (
     <>
-      <div className="container mx-auto px-4 mt-5">
+      <section className="container mx-auto px-4 mt-5">
         <div className="flex justify-between items-center p-6 bg-gradient-to-r from-[#ebf0ff] to-[#ccd0f0]">
           <div>
             <p className="text-zinc-500 font-semibold">SPECIAL OFFER</p>
@@ -22,7 +22,7 @@ export default function SpecialOffer() {
             <img className="w-48" src={accessories} alt="accessories" />
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

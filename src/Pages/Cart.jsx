@@ -88,7 +88,6 @@ export default function Cart() {
                 onClick={() => handleIncrease(product.id)}
                 disabled={(quantities[product.id] || 1) >= 5}
                 className="px-3 py-1.5 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
-
               >
                 +
               </button>
@@ -171,38 +170,66 @@ export default function Cart() {
                 <h2 className="text-xl font-bold text-slate-800 mb-5">
                   Shipping Information
                 </h2>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input
+                    id="first-name"
+                    name="first-name"
+                    autoComplete="given-name"
                     type="text"
                     placeholder="First Name"
                     className="border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-black"
                   />
+
                   <input
+                    id="last-name"
+                    name="last-name"
+                    autoComplete="family-name"
                     type="text"
                     placeholder="Last Name"
                     className="border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-black"
                   />
+
                   <input
+                    id="email"
+                    name="email"
+                    autoComplete="email"
                     type="email"
                     placeholder="Email Address"
                     className="border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-black"
                   />
+
                   <input
+                    id="phone"
+                    name="phone"
+                    autoComplete="tel"
                     type="tel"
                     placeholder="Phone Number"
                     className="border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-black"
                   />
+
                   <input
+                    id="city"
+                    name="city"
+                    autoComplete="address-level2"
                     type="text"
                     placeholder="City"
                     className="border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-black"
                   />
+
                   <input
+                    id="postal-code"
+                    name="postal-code"
+                    autoComplete="postal-code"
                     type="text"
                     placeholder="Postal Code"
                     className="border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-black"
                   />
+
                   <textarea
+                    id="address"
+                    name="address"
+                    autoComplete="street-address"
                     placeholder="Full Address"
                     rows="3"
                     className="md:col-span-2 border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-black resize-none"

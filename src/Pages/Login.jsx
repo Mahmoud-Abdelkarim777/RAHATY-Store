@@ -80,7 +80,7 @@ export default function Login() {
   };
   return (
     <>
-      <div className="w-full h-screen flex flex-col items-center justify-center">
+      <main className="w-full h-screen flex flex-col items-center justify-center">
         <div className="mb-5 w-full max-w-xs  text-sm">
           usernamer: emilys
           <br />
@@ -102,6 +102,7 @@ export default function Login() {
               >
                 Username
               </label>
+
               <input
                 value={inputValue.username}
                 onChange={handleInputValu}
@@ -109,6 +110,7 @@ export default function Login() {
                 id="username"
                 name="username"
                 type="text"
+                autoComplete="username"
                 placeholder="Username"
               />
               {errors.username && (
@@ -122,13 +124,15 @@ export default function Login() {
               >
                 Password
               </label>
+
               <input
                 value={inputValue.password}
                 onChange={handleInputValu}
-                className="shadow appearance-none border  rounded-lg w-full py-2 px-3 text-slate-900 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-slate-900 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 name="password"
                 type="password"
+                autoComplete="current-password"
                 placeholder="******************"
               />
               {errors.password && (
@@ -160,7 +164,7 @@ export default function Login() {
             &copy; {new Date().getFullYear()} MAHMOUD. All rights reserved.
           </p>
         </div>
-      </div>
+      </main>
     </>
   );
 }

@@ -34,6 +34,8 @@ export default function CategoryProducts() {
         <div className="relative h-52 bg-slate-100 overflow-hidden">
           <Link to={`/product/${product.id}`}>
             <img
+              loading="lazy"
+              decoding="async"
               src={product.thumbnail}
               alt="Product"
               className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
@@ -122,7 +124,7 @@ export default function CategoryProducts() {
     <>
       <Navbar />
 
-      <div className="container mx-auto px-4 py-8">
+      <section className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
@@ -146,7 +148,7 @@ export default function CategoryProducts() {
           {/* Product Card */}
           {AllProducts}
         </div>
-      </div>
+      </section>
     </>
   );
 }

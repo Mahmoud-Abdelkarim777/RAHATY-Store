@@ -13,7 +13,7 @@ import { CategoriesContext } from "../Contexts/CategoriesContext";
 import { Link } from "react-router-dom";
 export default function Category() {
   const { categories } = useContext(CategoriesContext);
-  // console.log(categories);
+  console.log(categories);
 
   const Categories = categories.map((category) => {
     return (
@@ -24,9 +24,11 @@ export default function Category() {
         <Link to={`/products/category/${category.slug}`}>
           <div className="flex flex-col justify-center items-center">
             <img
+              loading="lazy"
+              decoding="async"
               className="category-img w-[120px] h-[120px] rounded-full"
               src={category.image}
-              alt="category-image"
+              alt={category.name}
             />
             <p className="mt-3 text-base font-semibold">{category.name}</p>
           </div>

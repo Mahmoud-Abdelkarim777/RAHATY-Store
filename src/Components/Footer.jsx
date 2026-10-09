@@ -22,25 +22,50 @@ export default function Footer() {
                 better shopping experience.
               </p>
               <div className="icons flex items-center gap-3">
-                <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.facebook.com/"
+                  aria-label="Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fa-brands fa-facebook"></i>
                 </a>
-                <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.instagram.com/"
+                  aria-label="Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fa-brands fa-instagram"></i>
                 </a>
-                <a href="https://twitter.com/" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://twitter.com/"
+                  aria-label="Twitter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fa-brands fa-x-twitter"></i>
                 </a>
-                <a href="https://www.youtube.com/" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.youtube.com/"
+                  aria-label="YouTube"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fa-brands fa-youtube"></i>
                 </a>
-                <a href="https://www.pinterest.com/" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.pinterest.com/"
+                  aria-label="Pinterest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fa-brands fa-pinterest"></i>
                 </a>
               </div>
             </div>
             <div className="flex flex-col justify-center">
-              <h5 className="mb-3">Quick Links</h5>
+              <p className="mb-3">Quick Links</p>
               <Link to="/">Home</Link>
               <Link to="/Products">Products</Link>
               <Link to="/">Categories</Link>
@@ -48,7 +73,7 @@ export default function Footer() {
               <Link to="/About">About Us</Link>
             </div>
             <div className="flex flex-col justify-center">
-              <h5 className="mb-3">Customer Care</h5>
+              <p className="mb-3">Customer Care</p>
               <Link to="/">Contact Us</Link>
               <Link to="/">Shopping Info</Link>
               <Link to="/">Returns & Refunds</Link>
@@ -56,14 +81,17 @@ export default function Footer() {
               <Link to="/">Help</Link>
             </div>
             <div>
-              <h5>Subscribe to our Newsletter</h5>
+              <p>Subscribe to our Newsletter</p>
               <p className="my-3">
                 Get the latest updates and exclusive offers.
               </p>
               <div className="relative">
                 <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
                   className="w-full p-2 rounded-full text-black"
-                  type="text"
                   placeholder="Enter your email address"
                 />
                 <i className="fa-solid fa-arrow-right-long ms-3 bg-slate-900 hover:bg-black p-2 rounded-full absolute top-1/2 right-[-14px] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"></i>

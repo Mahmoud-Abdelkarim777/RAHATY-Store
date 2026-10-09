@@ -1,7 +1,7 @@
-import img1 from "../assets/images/img-1.jpg";
-import img2 from "../assets/images/img-2.jpg";
-import img3 from "../assets/images/img-3.jpg";
-import img4 from "../assets/images/img-4.jpg";
+import img1 from "../assets/images/img-1.webp";
+import img2 from "../assets/images/img-2.webp";
+import img3 from "../assets/images/img-3.webp";
+import img4 from "../assets/images/img-4.webp";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ export default function Hero() {
   };
   return (
     <>
-      <div className=" mx-auto">
+      <section className=" mx-auto">
         <Swiper
           pagination={pagination}
           navigation={true}
@@ -48,11 +48,16 @@ export default function Hero() {
                   Explore the latest trends and find
                   <br /> something made for you.
                 </p>
-                <Link to="/Products">
-                  <button className="min-h-[48px] text-white px-4 py-3 mt-5 bg-slate-900 hover:bg-black  rounded-full flex items-center justify-center">
-                    Shop Now{" "}
-                    <i className="fa-solid fa-arrow-right-long ms-3"></i>
-                  </button>
+
+                <Link
+                  to="/Products"
+                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5 bg-slate-900 hover:bg-black rounded-full inline-flex items-center justify-center gap-3"
+                >
+                  Shop Now
+                  <i
+                    className="fa-solid fa-arrow-right-long ms-3"
+                    aria-hidden="true"
+                  ></i>
                 </Link>
               </div>
             </div>
@@ -73,11 +78,17 @@ export default function Hero() {
                   Discover smart gadgets and the latest
                   <br /> technology.
                 </p>
-                <Link to="/Products">
-                  <button className="min-h-[48px] text-white px-4 py-3 mt-5 bg-slate-900 hover:bg-black  rounded-full flex items-center justify-center">
-                    Explore Electronics{" "}
-                    <i className="fa-solid fa-arrow-right-long ms-3"></i>
-                  </button>
+                <Link
+                  to="/Products"
+                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5
+  bg-slate-900 hover:bg-black rounded-full
+  inline-flex items-center justify-center gap-3"
+                >
+                  Explore Electronics
+                  <i
+                    className="fa-solid fa-arrow-right-long ms-3"
+                    aria-hidden="true"
+                  ></i>
                 </Link>
               </div>
             </div>
@@ -98,11 +109,18 @@ export default function Hero() {
                   Check out our newest products and
                   <br /> fresh arrivals.
                 </p>
-                <Link to="/Products">
-                  <button className="min-h-[48px] text-white px-4 py-3 mt-5 bg-slate-900 hover:bg-black  rounded-full flex items-center justify-center">
-                    Explore New Arrivals{" "}
-                    <i className="fa-solid fa-arrow-right-long ms-3"></i>
-                  </button>
+
+                <Link
+                  to="/Products"
+                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5
+  bg-slate-900 hover:bg-black rounded-full
+  inline-flex items-center justify-center gap-3"
+                >
+                  Explore New Arrivals
+                  <i
+                    className="fa-solid fa-arrow-right-long ms-3"
+                    aria-hidden="true"
+                  ></i>
                 </Link>
               </div>
             </div>
@@ -123,17 +141,23 @@ export default function Hero() {
                   Get amazing products at prices
                   <br /> you'll love.
                 </p>
-                <Link to="/Products">
-                  <button className="min-h-[48px] text-white px-4 py-3 mt-5 bg-slate-900 hover:bg-black  rounded-full flex items-center justify-center">
-                    View Deals{" "}
-                    <i className="fa-solid fa-arrow-right-long ms-3"></i>
-                  </button>
+                <Link
+                  to="/Products"
+                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5
+  bg-slate-900 hover:bg-black rounded-full
+  inline-flex items-center justify-center gap-3"
+                >
+                  View Deals
+                  <i
+                    className="fa-solid fa-arrow-right-long ms-3"
+                    aria-hidden="true"
+                  ></i>
                 </Link>
               </div>
             </div>
           </SwiperSlide>
         </Swiper>
-      </div>
+      </section>
     </>
   );
 }

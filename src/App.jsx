@@ -1,8 +1,8 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
-import Hero from './Components/Hero';
+import Hero from "./Components/Hero";
 import Category from "./Components/Category";
-import FeatureProducts from './Components/FeatureProducts';
+import FeatureProducts from "./Components/FeatureProducts";
 import SpecialOffer from "./Components/SpecialOffer";
 import Footer from "./Components/Footer";
 
@@ -21,10 +21,12 @@ function Home() {
   return (
     <>
       <Navbar />
-      <Hero/>
-      <Category />
-      <FeatureProducts/>
-      <SpecialOffer />
+      <main>
+        <Hero />
+        <Category />
+        <FeatureProducts />
+        <SpecialOffer />
+      </main>
       <Footer />
     </>
   );
