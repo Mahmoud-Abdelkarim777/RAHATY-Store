@@ -35,12 +35,13 @@ export default function CartProvider({ children }) {
     });
   };
 
-  const handleIncrease = (productId) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [productId]: (prev[productId] || 1) + 1,
-    }));
-  };
+  
+const handleIncrease = (productId) => {
+  setQuantities((prev) => ({
+    ...prev,
+    [productId]: Math.min(5, (prev[productId] || 1) + 1),
+  }));
+};
 
   const handleDecrease = (productId) => {
     setQuantities((prev) => ({

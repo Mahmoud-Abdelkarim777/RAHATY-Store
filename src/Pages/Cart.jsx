@@ -86,7 +86,9 @@ export default function Cart() {
               </span>
               <button
                 onClick={() => handleIncrease(product.id)}
-                className="px-3 py-1.5 hover:bg-slate-100"
+                disabled={(quantities[product.id] || 1) >= 5}
+                className="px-3 py-1.5 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+
               >
                 +
               </button>
