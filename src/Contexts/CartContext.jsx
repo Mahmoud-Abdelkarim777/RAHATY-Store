@@ -1,4 +1,3 @@
-
 import { createContext, useState } from "react";
 
 export const CartContext = createContext();
@@ -20,12 +19,11 @@ export default function CartProvider({ children }) {
   };
 
   const removeFromCart = (productId) => {
-    setCartID((prevItems) =>
-      prevItems.filter((id) => id !== productId)
-    );
+    setCartID((prevItems) => prevItems.filter((id) => id !== productId));
 
     setQuantities((prev) => {
       const updatedQuantities = { ...prev };
+      // Remove the deleted product's quantity so we don't keep unnecessary data in the cart.
       delete updatedQuantities[productId];
       return updatedQuantities;
     });
@@ -61,4 +59,3 @@ export default function CartProvider({ children }) {
     </CartContext.Provider>
   );
 }
-
