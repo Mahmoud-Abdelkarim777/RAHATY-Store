@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { FavoritesContext } from "../Contexts/FavoritesContext";
 import { ProductsContext } from "../Contexts/ProductsContext";
 import { CartContext } from "../Contexts/CartContext";
@@ -8,6 +8,39 @@ export default function Deals() {
     useContext(FavoritesContext);
   const { products } = useContext(ProductsContext);
   const { cartID, addToCart, removeFromCart } = useContext(CartContext);
+  // Countdown timer
+  
+  // Countdown timer
+  const OFFER_DURATION = 23 * 60 * 60 * 1000;
+  const STORAGE_KEY = "rah atystore-deals-end-time";
+
+  const [timeLeft, setTimeLeft] = useState(() => {
+    let endTime = Number(localStorage.getItem(STORAGE_KEY));
+
+    if (!endTime || endTime <= Date.now()) {
+      endTime = Date.now() + OFFER_DURATION;
+      localStorage.setItem(STORAGE_KEY, endTime);
+    }
+
+    return endTime - Date.now();
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const endTime = Number(localStorage.getItem(STORAGE_KEY));
+
+      setTimeLeft(Math.max(endTime - Date.now(), 0));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+  const seconds = Math.floor((timeLeft / 1000) % 60);
+  // End Countdown timer
+
+  // End Countdown timer
   const deals = [...products]
     .filter((product) => product.discountPercentage > 10)
     .sort((a, b) => b.discountPercentage - a.discountPercentage)
@@ -110,23 +143,29 @@ export default function Deals() {
               Limited Time
             </span>
             <div className="flex items-center gap-2">
-              <div className=" text-zinc-400 rounded-lg px-4 text-center">
-                <span className="block text-lg font-bold">08</span>
-                <span className="text-xs text-zinc-400">Hours</span>
+              <div className="rounded-lg px-4 text-center text-zinc-400">
+                <span className="block text-lg font-bold">
+                  {String(hours).padStart(2, "0")}
+                </span>
+                <span className="text-xs">Hours</span>
               </div>
 
               <span className="font-bold text-zinc-400">:</span>
 
-              <div className=" text-zinc-400 rounded-lg px-4 text-center">
-                <span className="block text-lg font-bold">45</span>
-                <span className="text-xs text-zinc-400">Minutes</span>
+              <div className="rounded-lg px-4 text-center text-zinc-400">
+                <span className="block text-lg font-bold">
+                  {String(minutes).padStart(2, "0")}
+                </span>
+                <span className="text-xs">Minutes</span>
               </div>
 
               <span className="font-bold text-zinc-400">:</span>
 
-              <div className=" text-zinc-400 rounded-lg px-4 text-center">
-                <span className="block text-lg font-bold">32</span>
-                <span className="text-xs text-zinc-400">Seconds</span>
+              <div className="rounded-lg px-4 text-center text-zinc-400">
+                <span className="block text-lg font-bold">
+                  {String(seconds).padStart(2, "0")}
+                </span>
+                <span className="text-xs">Seconds</span>
               </div>
             </div>
           </div>
