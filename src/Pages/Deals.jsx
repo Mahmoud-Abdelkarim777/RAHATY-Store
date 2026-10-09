@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FavoritesContext } from "../Contexts/FavoritesContext";
 import { ProductsContext } from "../Contexts/ProductsContext";
 import { CartContext } from "../Contexts/CartContext";
@@ -9,7 +10,7 @@ export default function Deals() {
   const { products } = useContext(ProductsContext);
   const { cartID, addToCart, removeFromCart } = useContext(CartContext);
   // Countdown timer
-  
+
   // Countdown timer
   const OFFER_DURATION = 23 * 60 * 60 * 1000;
   const STORAGE_KEY = "rah atystore-deals-end-time";
@@ -58,52 +59,58 @@ export default function Deals() {
           </span>
 
           <button
-            onClick={() => {
-              if (favoriteIDs.includes(product.id)) {
-                removeFromFavorites(product.id);
-              } else {
-                addToFavorites(product.id);
-              }
-            }}
-            className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full shadow flex items-center justify-center hover:bg-slate-50 transition"
-          >
-            <span
-              className={`text-4xl cursor-pointer transition-colors hover:text-red-500 ${
-                favoriteIDs.includes(product.id)
-                  ? "text-red-500"
-                  : "text-slate-400"
-              }`}
+              onClick={() => {
+                if (favoriteIDs.includes(product.id)) {
+                  removeFromFavorites(product.id);
+                } else {
+                  addToFavorites(product.id);
+                }
+              }}
+              className="absolute top-[6px] right-2"
             >
-              ♥
-            </span>
-          </button>
-
-          <img
-            src={product.thumbnail}
-            alt={product.title}
-            className="w-48 h-48 object-contain group-hover:scale-105 transition duration-300"
-          />
+              <span
+                className={`text-4xl cursor-pointer transition-colors ${
+                  favoriteIDs.includes(product.id)
+                    ? "text-red-500"
+                    : "text-slate-400"
+                }`}
+              >
+                ♥
+              </span>
+              
+            </button>
+          <Link to={`/product/${product.id}`}>
+            <img
+              src={product.thumbnail}
+              alt={product.title}
+              className="w-48 h-48 object-contain group-hover:scale-105 transition duration-300"
+            />
+          </Link>
         </div>
 
         <div className="p-5">
-          <p className="text-xs text-zinc-400 uppercase mb-1">Beauty</p>
+          <Link to={`/product/${product.id}`}>
+            <p className="text-xs text-zinc-400 uppercase mb-1">
+              {product.category}
+            </p>
 
-          <h3 className="font-semibold text-zinc-800 truncate">
-            {product.title}
-          </h3>
+            <h3 className="font-semibold text-zinc-800 truncate">
+              {product.title}
+            </h3>
 
-          <div className="flex items-center gap-2 mt-3">
-            <span className="text-lg font-bold text-slate-800">
-              $
-              {(product.price * (1 - product.discountPercentage / 100)).toFixed(
-                2,
-              )}
-            </span>
-            <span className="text-sm text-slate-400 line-through">
-              ${product.price.toFixed(2)}
-            </span>
-          </div>
-
+            <div className="flex items-center gap-2 mt-3">
+              <span className="text-lg font-bold text-slate-800">
+                $
+                {(
+                  product.price *
+                  (1 - product.discountPercentage / 100)
+                ).toFixed(2)}
+              </span>
+              <span className="text-sm text-slate-400 line-through">
+                ${product.price.toFixed(2)}
+              </span>
+            </div>
+          </Link>
           <button
             onClick={() => {
               if (cartID.includes(product.id)) {

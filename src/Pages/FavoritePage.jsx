@@ -43,12 +43,13 @@ export default function FavoritePage() {
       >
         {/* Image */}
         <div className="relative h-56 bg-slate-100 overflow-hidden">
-          <img
-            src={product.thumbnail}
-            alt={product.title}
-            className="w-full h-full object-cover"
-          />
-
+          <Link to={`/product/${product.id}`}>
+            <img
+              src={product.thumbnail}
+              alt={product.title}
+              className="w-full h-full object-cover"
+            />
+          </Link>
           {/* Favorite */}
           <button
             onClick={() => {
@@ -79,34 +80,35 @@ export default function FavoritePage() {
 
         {/* Content */}
         <div className="p-4">
-          <h2 className="text-lg font-semibold text-slate-800 truncate">
-            {product.title}
-          </h2>
+          <Link to={`/product/${product.id}`}>
+            <h2 className="text-lg font-semibold text-slate-800 truncate">
+              {product.title}
+            </h2>
 
-          <p className="text-sm text-slate-500 mt-1">{product.category}</p>
+            <p className="text-sm text-slate-500 mt-1">{product.category}</p>
 
-          {/* Rating */}
-          <div className="flex items-center gap-1 mt-3">
-            <i className="fa-solid fa-star text-yellow-500 text-sm"></i>
+            {/* Rating */}
+            <div className="flex items-center gap-1 mt-3">
+              <i className="fa-solid fa-star text-yellow-500 text-sm"></i>
 
-            <span className="text-sm text-slate-600">{product.rating}</span>
-          </div>
+              <span className="text-sm text-slate-600">{product.rating}</span>
+            </div>
 
-          {/* Price */}
-          <div className="flex items-center gap-2 mt-3">
-            <span className="text-sm text-slate-400 line-through">
-              ${product.price.toFixed(2)}
-            </span>
+            {/* Price */}
+            <div className="flex items-center gap-2 mt-3">
+              <span className="text-sm text-slate-400 line-through">
+                ${product.price.toFixed(2)}
+              </span>
 
-            <span className="text-xl font-bold text-red-500">
-              $
-              {(
-                product.price -
-                (product.price * product.discountPercentage) / 100
-              ).toFixed(2)}
-            </span>
-          </div>
-
+              <span className="text-xl font-bold text-red-500">
+                $
+                {(
+                  product.price -
+                  (product.price * product.discountPercentage) / 100
+                ).toFixed(2)}
+              </span>
+            </div>
+          </Link>
           {/* Add To Cart */}
           <button
             onClick={() => {

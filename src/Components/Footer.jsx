@@ -43,7 +43,7 @@ export default function Footer() {
               <h5 className="mb-3">Quick Links</h5>
               <Link to="/">Home</Link>
               <Link to="/Products">Products</Link>
-              <Link to="/Categories">Categories</Link>
+              <Link to="/">Categories</Link>
               <Link to="/Deals">Deals</Link>
               <Link to="/About">About Us</Link>
             </div>
