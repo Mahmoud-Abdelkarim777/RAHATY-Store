@@ -9,6 +9,12 @@ export default function CartProvider({ children }) {
   const cartCount = cartID.length;
 
   const addToCart = (productId) => {
+    const accessToken = localStorage.getItem("accessToken");
+
+    if (!accessToken) {
+      alert("You need to be logged in to add items to the cart.");
+      return;
+    }
     setCartID((prevItems) => {
       if (prevItems.includes(productId)) {
         return prevItems;
