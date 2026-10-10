@@ -142,6 +142,11 @@ export default function Navbar() {
         {/* menu */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
+          type="button"
+          aria-label={
+            menuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={menuOpen}
           className="md:hidden flex flex-col gap-1.5 cursor-pointer bg-transparent border-0 p-1"
         >
           <span
