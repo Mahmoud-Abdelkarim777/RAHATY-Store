@@ -28,7 +28,7 @@ export default function Category() {
               decoding="async"
               width="120"
               height="120"
-              className="category-img w-[120px] h-[120px] rounded-full"
+              className="category-img rounded-full"
               src={category.image}
               alt={category.name}
             />

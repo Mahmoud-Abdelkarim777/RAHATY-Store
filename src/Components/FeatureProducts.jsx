@@ -51,7 +51,7 @@ export default function FeatureProducts() {
                 height="300"
                 src={item.thumbnail}
                 alt={item.title}
-                className="w-full aspect-square object-cover"
+                className=" aspect-square object-cover"
               />
             </Link>
             <span className="absolute top-0 left-0 px-2 font-semibold text-white bg-red-800 rounded-full">

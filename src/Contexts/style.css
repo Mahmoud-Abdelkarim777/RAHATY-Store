@@ -2,8 +2,8 @@
 
 .swiper-slide .category-img {
   object-fit: cover;
-  width: 120px;
-  height: 120px;
+  /* width: 120px;
+  height: 120px; */
 }
 .Swiper{
   height: 240px;
