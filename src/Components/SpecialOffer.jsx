@@ -20,8 +20,6 @@ export default function SpecialOffer() {
           </div>
           <div>
             <img
-              width="519"
-              height="481"
               className="w-48 h-auto"
               loading="lazy"
               decoding="async"
