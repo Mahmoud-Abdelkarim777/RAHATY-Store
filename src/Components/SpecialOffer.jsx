@@ -19,7 +19,15 @@ export default function SpecialOffer() {
             </Link>
           </div>
           <div>
-            <img className="w-48" src={accessories} alt="accessories" />
+            <img
+              width="519"
+              height="481"
+              className="w-48 h-auto"
+              loading="lazy"
+              decoding="async"
+              src={accessories}
+              alt="accessories"
+            />
           </div>
         </div>
       </section>

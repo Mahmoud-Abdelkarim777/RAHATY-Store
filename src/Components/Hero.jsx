@@ -33,18 +33,22 @@ export default function Hero() {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div
-              className="w-full h-full bg-cover bg-center bg-no-repeat flex items-center "
-              style={{
-                backgroundImage: `url(${img1})`,
-              }}
-            >
-              <div className="container mx-auto px-4 flex flex-col items-start ">
+            <div className="relative w-full h-full flex items-center">
+              <img
+                src={img1}
+                alt="hero-image"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+
+              <div className="relative z-10 container mx-auto px-4 flex flex-col items-start">
                 <h1 className="m-0 text-6xl font-bold text-black">
                   Discover Your <br />
                   Style
                 </h1>
-                <p className="mt-5 text-black ">
+                <p className="mt-5 text-black">
                   Explore the latest trends and find
                   <br /> something made for you.
                 </p>
@@ -62,27 +66,30 @@ export default function Hero() {
               </div>
             </div>
           </SwiperSlide>
+
           <SwiperSlide>
-            <div
-              className="w-full h-full bg-cover bg-center bg-no-repeat flex items-center "
-              style={{
-                backgroundImage: `url(${img2})`,
-              }}
-            >
-              <div className="container mx-auto px-4 flex flex-col items-start ">
+            <div className="relative w-full h-full flex items-center">
+              <img
+                src={img2}
+                alt="hero-image"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+
+              <div className="relative z-10 container mx-auto px-4 flex flex-col items-start">
                 <h1 className="m-0 text-6xl font-bold text-black">
                   Upgrade Your <br />
                   Everyday
                 </h1>
-                <p className="mt-5 text-black ">
+                <p className="mt-5 text-black">
                   Discover smart gadgets and the latest
                   <br /> technology.
                 </p>
+
                 <Link
                   to="/Products"
-                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5
-  bg-slate-900 hover:bg-black rounded-full
-  inline-flex items-center justify-center gap-3"
+                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5 bg-slate-900 hover:bg-black rounded-full inline-flex items-center justify-center gap-3"
                 >
                   Explore Electronics
                   <i
@@ -93,28 +100,30 @@ export default function Hero() {
               </div>
             </div>
           </SwiperSlide>
+
           <SwiperSlide>
-            <div
-              className="w-full h-full bg-cover bg-center bg-no-repeat flex items-center "
-              style={{
-                backgroundImage: `url(${img3})`,
-              }}
-            >
-              <div className="container mx-auto px-4 flex flex-col items-start ">
+            <div className="relative w-full h-full flex items-center">
+              <img
+                src={img3}
+                alt="hero-image"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+
+              <div className="relative z-10 container mx-auto px-4 flex flex-col items-start">
                 <h1 className="m-0 text-6xl font-bold text-black">
                   New Season. <br />
                   New Look.
                 </h1>
-                <p className="mt-5 text-black ">
+                <p className="mt-5 text-black">
                   Check out our newest products and
                   <br /> fresh arrivals.
                 </p>
 
                 <Link
                   to="/Products"
-                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5
-  bg-slate-900 hover:bg-black rounded-full
-  inline-flex items-center justify-center gap-3"
+                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5 bg-slate-900 hover:bg-black rounded-full inline-flex items-center justify-center gap-3"
                 >
                   Explore New Arrivals
                   <i
@@ -125,27 +134,30 @@ export default function Hero() {
               </div>
             </div>
           </SwiperSlide>
+
           <SwiperSlide>
-            <div
-              className="w-full h-full bg-cover bg-center bg-no-repeat flex items-center "
-              style={{
-                backgroundImage: `url(${img4})`,
-              }}
-            >
-              <div className="container mx-auto px-4 flex flex-col items-start ">
+            <div className="relative w-full h-full flex items-center">
+              <img
+                src={img4}
+                alt="hero-image"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+
+              <div className="relative z-10 container mx-auto px-4 flex flex-col items-start">
                 <h1 className="m-0 text-6xl font-bold text-black">
                   Great Deals, <br />
                   Better Choices
                 </h1>
-                <p className="mt-5 text-black ">
+                <p className="mt-5 text-black">
                   Get amazing products at prices
                   <br /> you'll love.
                 </p>
+
                 <Link
                   to="/Products"
-                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5
-  bg-slate-900 hover:bg-black rounded-full
-  inline-flex items-center justify-center gap-3"
+                  className="min-h-[48px] min-w-[48px] text-white px-4 py-3 mt-5 bg-slate-900 hover:bg-black rounded-full inline-flex items-center justify-center gap-3"
                 >
                   View Deals
                   <i

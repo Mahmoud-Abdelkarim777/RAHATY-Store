@@ -47,9 +47,11 @@ export default function FeatureProducts() {
               <img
                 loading="lazy"
                 decoding="async"
+                width="300"
+                height="300"
                 src={item.thumbnail}
                 alt={item.title}
-                className="w-full h-full object-cover"
+                className="w-full aspect-square object-cover"
               />
             </Link>
             <span className="absolute top-0 left-0 px-2 font-semibold text-white bg-red-800 rounded-full">
@@ -104,17 +106,17 @@ export default function FeatureProducts() {
             </Link>
           </div>
           {/* Add To Cart */}
-          <div
-            onClick={() => {
-              if (cartID.includes(item.id)) {
-                removeFromCart(item.id);
-              } else {
-                addToCart(item.id);
-              }
-            }}
-            className="p-2 pt-0"
-          >
-            <button className="w-full bg-slate-900 hover:bg-black text-white py-2.5 rounded-lg  transition">
+          <div className="p-2 pt-0">
+            <button
+              onClick={() => {
+                if (cartID.includes(item.id)) {
+                  removeFromCart(item.id);
+                } else {
+                  addToCart(item.id);
+                }
+              }}
+              className="w-full bg-slate-900 hover:bg-black text-white py-2.5 rounded-lg  transition"
+            >
               <i className="fa-solid fa-cart-shopping text-white me-2"></i>
               {cartID.includes(item.id) ? "remove from Cart" : "Add to Cart"}
             </button>
@@ -143,6 +145,7 @@ export default function FeatureProducts() {
           pagination={{
             clickable: true,
             dynamicBullets: true,
+            // clickable: true,
             dynamicMainBullets: 3,
           }}
           breakpoints={{
