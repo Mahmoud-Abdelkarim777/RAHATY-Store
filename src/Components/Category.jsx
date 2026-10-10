@@ -26,6 +26,8 @@ export default function Category() {
             <img
               loading="lazy"
               decoding="async"
+              width="120"
+              height="120"
               className="category-img w-[120px] h-[120px] rounded-full"
               src={category.image}
               alt={category.name}
