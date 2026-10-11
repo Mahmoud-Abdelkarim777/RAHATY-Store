@@ -25,6 +25,8 @@ export default function SpecialOffer() {
               decoding="async"
               src={accessories}
               alt="accessories"
+              width="384"
+              height="356"
             />
           </div>
         </div>

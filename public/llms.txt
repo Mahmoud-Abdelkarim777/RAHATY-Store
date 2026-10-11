@@ -1,0 +1,10 @@
+# RAHATYStore
+
+> RAHATYStore is an online shopping website offering a modern and responsive shopping experience.
+
+## Website
+
+- [Home](https://YOUR-DOMAIN.com/)
+- [Products](https://YOUR-DOMAIN.com/Products)
+- [About](https://YOUR-DOMAIN.com/about)
+- [Contact](https://YOUR-DOMAIN.com/contact)
