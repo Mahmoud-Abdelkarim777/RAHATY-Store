@@ -28,7 +28,7 @@ export default function CategoryProducts() {
     return (
       <div
         key={product.id}
-        className="group border border-slate-200 rounded-xl overflow-hidden bg-white hover:shadow-lg transition"
+        className="group hover:scale-105 transition duration-300 border border-slate-200 rounded-xl overflow-hidden bg-white hover:shadow-lg"
       >
         {/* Image */}
         <div className="relative h-52 bg-slate-100 overflow-hidden">
@@ -38,7 +38,7 @@ export default function CategoryProducts() {
               decoding="async"
               src={product.thumbnail}
               alt="Product"
-              className="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+              className="w-full h-full object-contain hover:scale-105 transition duration-300"
             />
           </Link>
           {/* Discount */}

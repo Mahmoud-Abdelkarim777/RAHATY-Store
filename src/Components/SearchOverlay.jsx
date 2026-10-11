@@ -89,13 +89,13 @@ export default function SearchOverlay({ onClose }) {
                       navigate(`/product/${product.id}`);
                       onClose();
                     }}
-                    className="text-left border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition bg-white"
+                    className="text-left border border-slate-200 rounded-xl overflow-hidden hover:shadow-md hover:scale-105 duration-300 transition bg-white"
                   >
                     <div className="h-32 bg-slate-100">
                       <img
                         src={product.thumbnail}
                         alt={product.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </div>
 

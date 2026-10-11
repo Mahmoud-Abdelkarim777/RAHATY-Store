@@ -78,11 +78,11 @@ export default function Category() {
               },
 
               1024: {
-                slidesPerView: 6,
+                slidesPerView: 5,
               },
 
               1280: {
-                slidesPerView: 8,
+                slidesPerView: 7,
               },
             }}
             modules={[Pagination]}

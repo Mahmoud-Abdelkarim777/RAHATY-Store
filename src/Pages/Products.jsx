@@ -16,15 +16,15 @@ export default function Products() {
     return (
       <div
         key={product.id}
-        className="cursor-pointer relative flex flex-col h-full bg-white shadow-sm border border-slate-200 rounded-lg overflow-hidden"
+        className="mt-5 cursor-pointer hover:scale-105 transition duration-300 relative flex flex-col h-full bg-white shadow-sm border border-slate-200 rounded-lg overflow-hidden"
       >
         {/* Product Image */}
-        <div className="relative h-56 m-2.5 overflow-hidden rounded-md">
+        <div className=" relative h-56 m-2.5 overflow-hidden rounded-md">
           <Link to={`/product/${product.id}`}>
             <img
               src={product.thumbnail}
               alt={product.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain hover:scale-105 transition duration-300"
             />
 
             {/* Discount */}
@@ -89,7 +89,8 @@ export default function Products() {
             }else{
               addToCart(product.id)
             }
-          }} className="w-full hover:bg-black bg-slate-900 text-white py-2.5 rounded-lg  transition">
+          }} className="w-full flex items-center justify-center whitespace-nowrap hover:bg-black bg-slate-900 text-white py-2.5 rounded-lg  transition">
+            <i className="fa-solid fa-cart-shopping text-white me-2"></i>
             {cartID.includes(product.id) ? "remove from Cart" : "Add to Cart"}
           </button>
         </div>

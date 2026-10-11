@@ -51,7 +51,7 @@ export default function Deals() {
     return (
       <div
         key={product.id}
-        className="group bg-white border border-zinc-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300"
+        className="group hover:scale-105 transition duration-300 bg-white border border-zinc-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg"
       >
         <div className="relative bg-zinc-50 h-64 flex items-center justify-center">
           <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">
@@ -83,7 +83,7 @@ export default function Deals() {
             <img
               src={product.thumbnail}
               alt={product.title}
-              className="w-48 h-48 object-contain group-hover:scale-105 transition duration-300"
+              className="w-48 h-48 object-contain hover:scale-105 transition duration-300"
             />
           </Link>
         </div>
@@ -119,8 +119,9 @@ export default function Deals() {
                 addToCart(product.id);
               }
             }}
-            className="w-full hover:bg-black bg-slate-900 text-white py-2.5 rounded-lg transition"
+            className="w-full hover:bg-black flex items-center justify-center whitespace-nowrap bg-slate-900 text-white py-2.5 rounded-lg transition"
           >
+            <i className="fa-solid fa-cart-shopping text-white me-2"></i>
             {cartID.includes(product.id) ? "remove from Cart" : "Add to Cart"}
           </button>
         </div>

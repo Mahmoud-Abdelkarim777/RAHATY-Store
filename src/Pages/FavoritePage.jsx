@@ -39,7 +39,7 @@ export default function FavoritePage() {
       // /* Favorite Card */
       <div
         key={product.id}
-        className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+        className="hover:scale-105 duration-300 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
       >
         {/* Image */}
         <div className="relative h-56 bg-slate-100 overflow-hidden">
@@ -47,7 +47,7 @@ export default function FavoritePage() {
             <img
               src={product.thumbnail}
               alt={product.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain hover:scale-105 transition duration-300"
             />
           </Link>
           {/* Favorite */}
