@@ -40,9 +40,9 @@ export default function FeatureProducts() {
         className="SwiperSlide heightOfSwiperSlied rounded-lg shadow-lg"
         key={item.id}
       >
-        <div className="relative flex flex-col h-full bg-white shadow-sm border border-slate-200 rounded-lg">
+        <div className="hover:scale-105 transition duration-300 relative flex flex-col h-full bg-white shadow-sm border border-slate-200 rounded-lg">
           {/* Image */}
-          <div className="relative m-2.5 overflow-hidden rounded-md">
+          <div className="relative m-2.5 overflow-hidden rounded-md ">
             <Link to={`/product/${item.id}`}>
               <img
                 loading="lazy"
@@ -51,7 +51,7 @@ export default function FeatureProducts() {
                 height="300"
                 src={item.thumbnail}
                 alt={item.title}
-                className=" aspect-square object-cover"
+                className="w-full h-full object-contain hover:scale-105 transition duration-300"
               />
             </Link>
             <span className="absolute top-0 left-0 px-2 font-semibold text-white bg-red-800 rounded-full">
@@ -115,10 +115,10 @@ export default function FeatureProducts() {
                   addToCart(item.id);
                 }
               }}
-              className="w-full bg-slate-900 hover:bg-black text-white py-2.5 rounded-lg  transition"
+              className="w-full flex items-center justify-center whitespace-nowrap bg-slate-900 hover:bg-black text-white py-2.5 px-2 rounded-lg transition"
             >
               <i className="fa-solid fa-cart-shopping text-white me-2"></i>
-              {cartID.includes(item.id) ? "remove from Cart" : "Add to Cart"}
+              {cartID.includes(item.id) ? "Remove from Cart" : "Add to Cart"}
             </button>
           </div>
         </div>
@@ -150,22 +150,22 @@ export default function FeatureProducts() {
           }}
           breakpoints={{
             0: {
-              slidesPerView: 2,
+              slidesPerView: 1,
             },
 
             640: {
-              slidesPerView: 3,
+              slidesPerView: 2,
             },
 
             768: {
-              slidesPerView: 4,
+              slidesPerView: 3,
             },
 
             1024: {
-              slidesPerView: 5,
+              slidesPerView: 4,
             },
             1400: {
-              slidesPerView: 7,
+              slidesPerView: 6,
             },
           }}
           modules={[Pagination]}

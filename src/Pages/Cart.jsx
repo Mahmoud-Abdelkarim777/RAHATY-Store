@@ -46,7 +46,7 @@ export default function Cart() {
           <img
             src={product.thumbnail}
             alt={product.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
         {/* Product Info */}

@@ -38,7 +38,7 @@ export default function CategoryProducts() {
               decoding="async"
               src={product.thumbnail}
               alt="Product"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+              className="w-full h-full object-contain group-hover:scale-105 transition duration-300"
             />
           </Link>
           {/* Discount */}
@@ -144,7 +144,7 @@ export default function CategoryProducts() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
           {/* Product Card */}
           {AllProducts}
         </div>

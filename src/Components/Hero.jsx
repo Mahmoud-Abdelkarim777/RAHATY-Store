@@ -26,10 +26,10 @@ export default function Hero() {
           pagination={pagination}
           navigation={true}
           modules={[Pagination, Navigation, Autoplay]}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 3000,
+          //   disableOnInteraction: false,
+          // }}
           className="mySwiper"
         >
           <SwiperSlide>
@@ -44,11 +44,11 @@ export default function Hero() {
               />
 
               <div className="relative z-10 container mx-auto px-4 flex flex-col items-start">
-                <h1 className="m-0 text-6xl font-bold text-black">
+                <h1 className="m-0 text-4xl sm:text-5xl lg:text-6xl font-bold text-black">
                   Discover Your <br />
                   Style
                 </h1>
-                <p className="mt-5 text-black">
+                <p className="mt-5 lg:text-lg font-semibold text-black">
                   Explore the latest trends and find
                   <br /> something made for you.
                 </p>
@@ -78,11 +78,11 @@ export default function Hero() {
               />
 
               <div className="relative z-10 container mx-auto px-4 flex flex-col items-start">
-                <h1 className="m-0 text-6xl font-bold text-black">
+                <h1 className="m-0 text-4xl sm:text-5xl lg:text-6xl font-bold text-black">
                   Upgrade Your <br />
                   Everyday
                 </h1>
-                <p className="mt-5 text-black">
+                <p className="mt-5 lg:text-lg font-semibold text-black">
                   Discover smart gadgets and the latest
                   <br /> technology.
                 </p>
@@ -112,11 +112,11 @@ export default function Hero() {
               />
 
               <div className="relative z-10 container mx-auto px-4 flex flex-col items-start">
-                <h1 className="m-0 text-6xl font-bold text-black">
+                <h1 className="m-0 text-4xl sm:text-5xl lg:text-6xl font-bold text-black">
                   New Season. <br />
                   New Look.
                 </h1>
-                <p className="mt-5 text-black">
+                <p className="mt-5 lg:text-lg font-semibold text-black">
                   Check out our newest products and
                   <br /> fresh arrivals.
                 </p>
@@ -146,11 +146,11 @@ export default function Hero() {
               />
 
               <div className="relative z-10 container mx-auto px-4 flex flex-col items-start">
-                <h1 className="m-0 text-6xl font-bold text-black">
+                <h1 className="m-0 text-4xl sm:text-5xl lg:text-6xl font-bold text-black">
                   Great Deals, <br />
                   Better Choices
                 </h1>
-                <p className="mt-5 text-black">
+                <p className="mt-5 lg:text-lg font-semibold text-black">
                   Get amazing products at prices
                   <br /> you'll love.
                 </p>

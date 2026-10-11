@@ -215,7 +215,7 @@ export default function Navbar() {
                 className="lg:hidden flex justify-center items-center gap-5"
               >
                 <i className="fa-solid fa-user"></i>
-                <p>Login/ Sign Up</p>
+                <p className="text-black">Login/ Sign Up</p>
               </Link>
             </div>
           </div>
