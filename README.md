@@ -85,3 +85,39 @@ Front-End Developer
 ## 📄 License
 
 This project was created for learning and portfolio purposes.
+
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](./screenshots/homepage.png)
+
+### 🛍️ Products Page
+![Products Page](./screenshots/productspage.png)
+
+### 📂 Category Products
+![Category Products](./screenshots/categoryproducts.png)
+
+### 🔎 Search Page
+![Search Page](./screenshots/searchpage.png)
+
+### 🏷️ Deals Page
+![Deals Page](./screenshots/dealspage.png)
+
+### 📦 Product Details Page
+![Product Details Page](./screenshots/productsdetailspage.png)
+
+### 🛒 Cart Page
+![Cart Page](./screenshots/cartpage.png)
+
+### 🛒 Empty Cart Page
+![Empty Cart Page](./screenshots/emptycartpage.png)
+
+### ❤️ Favorites Page
+![Favorites Page](./screenshots/favoritespage.png)
+
+### 💔 Empty Favorites Page
+![Empty Favorites Page](./screenshots/emptyfavoritepage.png)
+
+### ℹ️ About Page
+![About Page](./screenshots/aboutpage.png)
