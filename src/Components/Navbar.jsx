@@ -131,7 +131,7 @@ export default function Navbar() {
             ) : (
               <Link
                 to="/login"
-                className="hidden lg:flex justify-center items-center text-white cursor-pointer"
+                className="hidden md:flex justify-center items-center text-white cursor-pointer"
               >
                 <i className="fa-solid fa-user"></i>
                 <p>Login/ Sign Up</p>
