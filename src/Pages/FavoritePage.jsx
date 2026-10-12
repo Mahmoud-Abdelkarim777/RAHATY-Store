@@ -22,10 +22,8 @@ export default function FavoritePage() {
     });
     Promise.all(requests)
       .then((response) => {
-        console.log("response", response);
         const productsData = response.map((res) => res.data);
         setProducts(productsData);
-        // console.log("productsData", productsData);
       })
       .catch((error) => {
         console.error("Error fetching favorite products", error);

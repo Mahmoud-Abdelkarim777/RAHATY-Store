@@ -44,7 +44,6 @@ export default function Navbar() {
       .get("https://dummyjson.com/products/category-list?limit=8")
       .then((res) => {
         const limtedData = res.data.slice(0, 6);
-        console.log(limtedData);
         setLimtedCat(limtedData);
       })
       .catch((error) => {

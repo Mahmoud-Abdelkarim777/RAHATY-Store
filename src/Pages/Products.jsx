@@ -8,7 +8,6 @@ import { FavoritesContext } from "../Contexts/FavoritesContext";
 export default function Products() {
   const { products, loading, error } = useContext(ProductsContext);
   const { cartID, addToCart, removeFromCart } = useContext(CartContext);
-  // console.log(products);
   const { favoriteIDs, addToFavorites, removeFromFavorites } =
       useContext(FavoritesContext);
 

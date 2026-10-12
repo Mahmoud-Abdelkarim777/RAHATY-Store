@@ -17,7 +17,6 @@ export default function CategoryProducts() {
       .get(`https://dummyjson.com/products/category/${slug}`)
       .then((res) => {
         setProducts(res.data.products);
-        console.log(res.data);
       })
       .catch((error) => {
         console.error(error);

@@ -13,7 +13,6 @@ import { CategoriesContext } from "../Contexts/CategoriesContext";
 import { Link } from "react-router-dom";
 export default function Category() {
   const { categories } = useContext(CategoriesContext);
-  console.log(categories);
 
   const Categories = categories.map((category) => {
     return (
