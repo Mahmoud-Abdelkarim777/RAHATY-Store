@@ -120,4 +120,4 @@ This project was created for learning and portfolio purposes.
 ![Empty Favorites Page](./screenshots/emptyfavoritepage.png)
 
 ### ℹ️ About Page
-![About Page](./screenshots/aboutpage.png)
+![About Page](./screenshots/aboutPage.png)
