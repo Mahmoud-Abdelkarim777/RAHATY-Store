@@ -78,7 +78,7 @@ src/
 
 ## 👨‍💻 Author
 
-##[Mahmoud Abdelkarim](https://www.linkedin.com/in/mahmoud-abdelkarim-487452229/?isSelfProfile=true)
+#[Mahmoud Abdelkarim](https://www.linkedin.com/in/mahmoud-abdelkarim-487452229/?isSelfProfile=true)
 
 Front-End Developer
 
